@@ -1,0 +1,153 @@
+C:\Users\MDK>add
+'add' is not recognized as an internal or external command,
+operable program or batch file.
+
+C:\Users\MDK>cdhelp
+'cdhelp' is not recognized as an internal or external command,
+operable program or batch file.
+
+
+C:\Users\MDK>mkdir
+The syntax of the command is incorrect.
+
+
+C:\Users\MDK>offline
+'offline' is not recognized as an internal or external command,
+operable program or batch file.
+
+C:\Users\MDK>online
+'online' is not recognized as an internal or external command,
+operable program or batch file.
+
+C:\Users\MDK>syntex
+'syntex' is not recognized as an internal or external command,
+operable program or batch file.
+
+C:\Users\MDK>dosshell
+'dosshell' is not recognized as an internal or external command,
+operable program or batch file.
+
+C:\Users\MDK>debug
+'debug' is not recognized as an internal or external command,
+operable program or batch file.
+
+C:\Users\MDK>date
+The current date is: 19/08/2022
+Enter the new date: (dd-mm-yy)
+
+C:\Users\MDK>whoami
+desktop-avck7pa\mdk
+
+
+C:\Users\MDK>date
+The current date is: 19/08/2022
+Enter the new date: (dd-mm-yy)
+
+
+C:\Users\MDK>find
+FIND: Parameter format not correct
+
+
+C:\Users\MDK>add
+'add' is not recognized as an internal or external command,
+operable program or batch file.
+
+
+C:\Users\MDK>at
+The AT command has been deprecated. Please use schtasks.exe instead.
+
+The request is not supported.
+
+C:\Users\MDK>type
+The syntax of the command is incorrect.
+
+C:\Users\MDK>if
+The syntax of the command is incorrect.
+
+C:\Users\MDK>quser
+ USERNAME              SESSIONNAME        ID  STATE   IDLE TIME  LOGON TIME
+>mdk                   console             5  Active      none   19/08/2022 10.38
+
+
+C:\Users\MDK>tscon
+Invalid parameter(s)
+Attaches a user session to a remote desktop session.
+
+TSCON {sessionid | sessionname} [/DEST:sessionname]
+        [/PASSWORD:pw | /PASSWORD:*] [/V]
+
+  sessionid          The ID of the session.
+  sessionname        The name of the session.
+  /DEST:sessionname  Connect the session to destination sessionname.
+  /PASSWORD:pw       Password of user owning identified session.
+  /V                 Displays information about the actions performed.
+
+C:\Users\MDK>net
+The syntax of this command is:
+
+NET
+    [ ACCOUNTS | COMPUTER | CONFIG | CONTINUE | FILE | GROUP | HELP |
+      HELPMSG | LOCALGROUP | PAUSE | SESSION | SHARE | START |
+      STATISTICS | STOP | TIME | USE | USER | VIEW ]
+
+C:\Users\MDK> ping google.com
+
+Pinging google.com [142.250.4.139] with 32 bytes of data:
+Reply from 142.250.4.139: bytes=32 time=102ms TTL=56
+Reply from 142.250.4.139: bytes=32 time=251ms TTL=56
+Reply from 142.250.4.139: bytes=32 time=467ms TTL=56
+Reply from 142.250.4.139: bytes=32 time=134ms TTL=56
+
+Ping statistics for 142.250.4.139:
+    Packets: Sent = 4, Received = 4, Lost = 0 (0% loss),
+Approximate round trip times in milli-seconds:
+    Minimum = 102ms, Maximum = 467ms, Average = 238ms
+
+C:\Users\MDK> date
+The current date is: 19/08/2022
+Enter the new date: (dd-mm-yy)
+
+C:\Users\MDK> time
+The current time is: 11.14.21,08
+Enter the new time:
+
+C:\Users\MDK>netstat
+
+Active Connections
+
+  Proto  Local Address          Foreign Address        State
+  TCP    127.0.0.1:54270        activate:wsd           TIME_WAIT
+  TCP    127.0.0.1:54279        activate:wsd           TIME_WAIT
+  TCP    127.0.0.1:54299        activate:wsd           TIME_WAIT
+  TCP    127.0.0.1:54309        activate:wsd           TIME_WAIT
+  TCP    127.0.0.1:54312        activate:wsd           TIME_WAIT
+  TCP    127.0.0.1:54314        activate:wsd           TIME_WAIT
+  TCP    127.0.0.1:54315        activate:wsd           TIME_WAIT
+  TCP    127.0.0.1:54317        activate:wsd           TIME_WAIT
+  TCP    127.0.0.1:54318        activate:wsd           TIME_WAIT
+  TCP    172.16.3.145:54203     8.241.133.126:http     TIME_WAIT
+
+C:\Users\MDK>getmac
+
+Physical Address    Transport Name
+=================== ==========================================================
+A0-AF-BD-91-78-7C   Media disconnected
+A8-1E-84-D2-1C-78   Media disconnected
+12-20-AB-F3-F7-92   \Device\Tcpip_{A3FC286D-D234-463E-BF04-AAD8FD61670B}
+
+C:\Users\MDK>
+C:\Users\MDK>
+
+
+
+
+
+
+
+
+
+
+
+
+
+

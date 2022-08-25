@@ -1,0 +1,11 @@
+be careful not to fall off!
+>>> # this is the first comment
+>>> spam = 1 # and this is the second comment
+>>> text
+Traceback (most recent call last):
+  File "<stdin>", line 1, in <module>
+NameError: name 'text' is not defined. Did you mean: 'next'?
+>>> text = "#This is a not a comment because it's inside quotes."
+>>> print(text)
+#This is a not a comment because it's inside quotes.
+>>>

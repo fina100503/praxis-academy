@@ -1,0 +1,207 @@
+Dasar pengetahuan
+Kontak
+Gabung
+MariaDB
+PRODUK
+JASA
+HARGA
+SUMBER DAYA
+PENGEMBANG
+PERUSAHAAN
+
+Bagaimana menghubungkan program Python ke MariaDB
+Diposting pada 25 Juni 2020 oleh Rob Hedgpeth
+  
+
+Kami sebelumnya membuat blog tentang menggunakan Python untuk terhubung ke server MariaDB menggunakan paket MySQL Python. Pada Juni 2020, MariaDB membuat rilis Konektor/Python pertama yang tersedia secara umum. Kami telah menyegarkan blog ini untuk mencerminkan teknologi terbaru. Jika Anda membutuhkan blog lama, Anda dapat menemukannya di sini .
+
+Anda dapat menggunakan bahasa pemrograman populer Python untuk mengelola data yang disimpan di MariaDB Platform , termasuk MariaDB Server, MariaDB MaxScale, dan MariaDB SkySQL . Berikut adalah semua yang perlu Anda ketahui tentang menghubungkan ke Platform MariaDB dari Python untuk mengambil, memperbarui, dan memasukkan informasi.
+
+Mempersiapkan dan Menginstal
+Anda akan memerlukan akses ke Server MariaDB. Kami merekomendasikan salah satu dari dua metode ini:
+1. Unduh MariaDB Server di perangkat keras Anda sendiri. Lihat Panduan Penerapan kami untuk petunjuk langkah demi langkah dalam dokumentasi kami.
+
+ATAU
+
+2. Terapkan Platform MariaDB, yang mencakup MariaDB Enterprise Server, menggunakan MariaDB SkySQL. Lihat dokumentasi kami untuk meluncurkan layanan database dalam hitungan menit.
+
+Jika Anda ingin mencoba integrasi Python dengan MariaDB tetapi Anda tidak memiliki database untuk dimainkan, Anda dapat menggunakan database contoh karyawan yang populer .
+
+MariaDB menyediakan dukungan Python melalui MariaDB Connector/Python, yang tersedia melalui Python Package Index. Untuk menginstal, gunakan PIP:
+
+$pip3 instal mariadb
+Menghubungkan ke Server MariaDB
+1. Untuk terhubung ke MariaDB Server menggunakan MariaDB Connector/Python, Anda harus mengimpornya terlebih dahulu, sama seperti modul lainnya:import mariadb
+
+2. Selanjutnya, buat koneksi database dengan fungsi connect(). Fungsi ini mengambil serangkaian argumen bernama yang menentukan kredensial klien Anda, seperti nama pengguna, host, kata sandi. Jika Anda menggunakan instans database di SkySQL, informasi ini disediakan di halaman Detail Layanan untuk instans database Anda.
+
+Koneksi memberi Anda antarmuka untuk mengonfigurasi koneksi aplikasi Anda ke Server MariaDB.
+
+3. Terakhir, panggil cursor()metode pada koneksi untuk mengambil kursor.
+
+Kursor memberi Anda antarmuka untuk berinteraksi dengan Server, seperti menjalankan kueri SQL dan mengelola transaksi.
+
+# Modul Impor 
+impor mariadb
+ import sys
+
+# Hubungkan ke Platform MariaDB 
+coba :
+    samb = mariadb.koneksi(
+        pengguna= "db_pengguna" ,
+        kata sandi = "db_user_passwd" ,
+        tuan rumah= "192.0.2.1" ,
+        pelabuhan = 3306 ,
+        database= "karyawan"
+
+    )
+kecuali mariadb.Error sebagai e:
+    print( f"Kesalahan saat menghubungkan ke Platform MariaDB: {e} " )
+    sys.keluar(1)
+
+# Dapatkan Kursor 
+skr = conn.cursor()
+Mengambil Data
+Setelah Anda memiliki kode awal di tempat Anda dapat mulai bekerja dengan data. Hal pertama yang harus Anda lakukan adalah mencoba mengambil informasi dari database. Berikut adalah kode untuk kueri terhadap database karyawan:
+
+cur.execute(
+     "PILIH first_name,last_name FROM employee WHERE first_name=?" ,
+    (some_name,))
+MariaDB Connector/Python uses prepared statements, sanitizing and inserting the values from the tuple into the position of the question marks (?). This is safer than inserting through f-strings or format specifiers when working with user provided information.
+
+The query results are stored in a list in the cursor object. To view the results, you can loop over the cursor.
+
+# Print Result-set
+for (first_name, last_name) in cur:
+    print(f"First Name: {first_name}, Last Name: {last_name}")
+Each row is passed from the cursor as a tuple containing the columns in the SELECT statement.
+
+Adding Data
+Using the same execute() method with an INSERT statement, you can add rows to the table.
+
+cursor.execute(
+    "INSERT INTO employees (first_name,last_name) VALUES (?, ?)", 
+    (first_name, last_name))
+By default, MariaDB Connector/Python enables auto-commit. If you would like to manually manage your transactions, only committing when you are ready, you can disable it by setting the autocommit attribute on the connection to False.
+
+# Disable Auto-Commit
+conn.autocommit = False
+Once this is done, you can commit and rollback transactions using the commit() and rollback() methods. MariaDB Server allows you to run multiple concurrent transactions on the same table without locking it when you use the InnoDB storage engine.
+
+While inserting rows, you may want to find the Primary Key of the last inserted row when it is generated, as with auto-incremented values. You can retrieve this using the lastrowid() method on the cursor.
+
+Updating and deleting rows is done similarly to inserting them. The only difference is in the query used.
+
+Catching Exceptions
+For any of your SQL actions (querying, updating, deleting, or inserting records) you should try to trap errors, so you can verify that your actions are being executed as expected and you know about any problems as they occur. To trap errors, use the Error class:
+
+try:
+    cursor.execute("some MariaDB query"))
+except mariadb.Error as e:
+    print(f"Error: {e}")
+If the query in the try clause of the above code fails, MariaDB Server returns an SQL exception, which is caught in the except and printed to stdout. This programming best practice for catching exceptions is especially important when you’re working with a database, because you need to ensure the integrity of the information.
+
+Once you finish working with the database make sure that you close this connection to avoid keeping unused connections open and thus wasting resources. You can close the connection with the close() method:
+
+# Close Connection
+conn.close()
+If you used SkySQL to experiment, you may want to delete your database service to stop incurring charges.
+
+The Complete Script
+This is how easy and straightforward it is to connect your Python code to a MariaDB database. Here is how a complete script should look like:
+
+#!/usr/bin/python 
+import mariadb 
+
+conn = mariadb.connect(
+    user="db_user",
+    password="db_user_passwd",
+    host="localhost",
+    database="employees")
+cur = conn.cursor() 
+
+#retrieving information 
+some_name = "Georgi" 
+cur.execute("SELECT first_name,last_name FROM employees WHERE first_name=?", (some_name,)) 
+
+for first_name, last_name in cur: 
+    print(f"First name: {first_name}, Last name: {last_name}")
+    
+#insert information 
+try: 
+    cur.execute("INSERT INTO employees (first_name,last_name) VALUES (?, ?)", ("Maria","DB")) 
+except mariadb.Error as e: 
+    print(f"Error: {e}")
+
+conn.commit() 
+print(f"Last Inserted ID: {cur.lastrowid}")
+    
+conn.close()
+For More Information
+Watch the webinar: MariaDB and Python
+More information about MariaDB Connectors
+Get started with MariaDB in the cloud
+MariaDB SkySQL documentation
+See more sample apps using MariaDB and Python
+Anda mungkin juga tertarik
+Postingan Blog
+POSTINGAN BLOG
+Konektor Python GA
+Postingan Blog
+Konektor Python GA
+webinar
+WEBINAR
+Deep Dive: Memanfaatkan Konektor MariaDB untuk Python
+webinar
+Deep Dive: Memanfaatkan Konektor MariaDB untuk Python
+Postingan Blog
+POSTINGAN BLOG
+Apa yang Baru di Server Komunitas MariaDB 10.5?
+Postingan Blog
+Apa yang Baru di Server Komunitas MariaDB 10.5?
+ 
+PRODUK
+Server Komunitas
+Server Perusahaan
+SkySQL
+Xpand
+Toko kolom
+Harga
+JASA
+DBA jarak jauh
+SkyDBA
+Arsitek Perusahaan
+Dukungan teknis
+Praktek Migrasi
+Konsultasi
+Pelatihan
+SUMBER DAYA
+Unduh MariaDB
+Dokumentasi
+Blog MariaDB Resmi
+Pengembang
+Mendukung
+Cerita Pelanggan
+Acara
+TENTANG
+Kontak
+Kepemimpinan
+Mitra
+Ruang wartawan
+investor
+Karir
+Pusat Kepercayaan
+Pelaporan Kerentanan
+Berlangganan newsletter kami!
+YOUR EMAIL ADDRESS
+
+-- Please Select Country --
+ADD ME
+© 2022 MariaDB. Seluruh hak cipta.
+Hukum | Kebijakan Privasi | Kebijakan Cookie | peta situs
+
+  
+Français
+Jerman
+日本語
+한국어

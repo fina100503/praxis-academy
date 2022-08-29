@@ -1,0 +1,528 @@
+
+Basis data
+dari Wikipedia, ensiklopedia gratis
+Langsung ke navigasiLangsung ke pencarian
+Artikel ini berisi uraian tentang konsep komputasi. Untuk contoh konsep umum, lihat Daftar database .
+
+Pernyataan pilih SQL dan hasilnya
+Dalam komputasi , database adalah kumpulan terorganisir dari data yang disimpan dan diakses secara elektronik. Basis data kecil dapat disimpan di sistem file , sedangkan basis data besar disimpan di kluster komputer atau penyimpanan cloud . Desain basis data mencakup teknik formal dan pertimbangan praktis, termasuk pemodelan data , representasi dan penyimpanan data yang efisien, bahasa kueri , keamanan dan privasi data sensitif, dan masalah komputasi terdistribusi , termasuk mendukung akses konkuren dantoleransi kesalahan .
+
+Sistem manajemen basis data ( DBMS ) adalah perangkat lunak yang berinteraksi dengan pengguna akhir , aplikasi, dan basis data itu sendiri untuk menangkap dan menganalisis data. Perangkat lunak DBMS juga mencakup fasilitas inti yang disediakan untuk mengelola database. Jumlah total database, DBMS dan aplikasi terkait dapat disebut sebagai sistem database. Seringkali istilah "database" juga digunakan secara longgar untuk merujuk ke salah satu DBMS, sistem database atau aplikasi yang terkait dengan database.
+
+Ilmuwan komputer dapat mengklasifikasikan sistem manajemen basis data menurut model basis data yang mereka dukung. Database relasional menjadi dominan pada 1980-an. Data model ini sebagai baris dan kolom dalam serangkaian tabel , dan sebagian besar menggunakan SQL untuk menulis dan membuat kueri data. Pada tahun 2000-an, database non-relasional menjadi populer, secara kolektif disebut sebagai NoSQL , karena mereka menggunakan bahasa query yang berbeda .
+
+
+Isi
+1	Terminologi dan ikhtisar
+2	Sejarah
+2.1	1960-an, DBMS navigasi
+2.2	1970-an, DBMS relasional
+2.3	Pendekatan terintegrasi
+2.4	Akhir 1970-an, SQL DBMS
+2.5	1980-an, di desktop
+2.6	1990-an, berorientasi objek
+2.7	2000-an, NoSQL dan NewSQL
+3	Gunakan kasus
+4	Klasifikasi
+5	Sistem manajemen basis data
+6	Aplikasi
+6.1	Antarmuka program aplikasi
+7	Bahasa basis data
+8	Penyimpanan
+8.1	Tampilan terwujud
+8.2	Replikasi
+9	Keamanan
+10	Transaksi dan konkurensi
+11	Migrasi
+12	Membangun, memelihara, dan menyetel
+13	Cadangkan dan pulihkan
+14	Analisis statis
+15	Fitur lain-lain
+16	Desain dan pemodelan
+16.1	Model
+16.2	Pandangan eksternal, konseptual, dan internal
+17	Riset
+18	Lihat juga
+19	Catatan
+20	Referensi
+21	Sumber
+22	Bacaan lebih lanjut
+23	Tautan eksternal
+Terminologi dan ikhtisar
+Secara formal, "basis data" mengacu pada sekumpulan data terkait dan cara mengaturnya. Akses ke data ini biasanya disediakan oleh "sistem manajemen basis data" (DBMS) yang terdiri dari satu set perangkat lunak komputer terintegrasi yang memungkinkan pengguna untuk berinteraksi dengan satu atau lebih basis data dan menyediakan akses ke semua data yang terkandung dalam basis data (walaupun pembatasan mungkin ada yang membatasi akses ke data tertentu). DBMS menyediakan berbagai fungsi yang memungkinkan pemasukan, penyimpanan, dan pengambilan informasi dalam jumlah besar dan menyediakan cara untuk mengelola bagaimana informasi itu diatur.
+
+Karena hubungan yang erat di antara mereka, istilah "basis data" sering digunakan dengan santai untuk merujuk pada basis data dan DBMS yang digunakan untuk memanipulasinya.
+
+Di luar dunia teknologi informasi profesional , istilah basis data sering digunakan untuk merujuk pada kumpulan data terkait (seperti spreadsheet atau indeks kartu) karena persyaratan ukuran dan penggunaan biasanya mengharuskan penggunaan sistem manajemen basis data. [1]
+
+DBMS yang ada menyediakan berbagai fungsi yang memungkinkan pengelolaan database dan datanya yang dapat diklasifikasikan ke dalam empat kelompok fungsional utama:
+
+Definisi data – Pembuatan, modifikasi, dan penghapusan definisi yang mendefinisikan organisasi data.
+Update – Penyisipan, modifikasi, dan penghapusan data aktual. [2]
+Retrieval – Memberikan informasi dalam bentuk yang dapat digunakan secara langsung atau untuk diproses lebih lanjut oleh aplikasi lain. Data yang diambil dapat dibuat tersedia dalam bentuk yang pada dasarnya sama dengan yang disimpan dalam database atau dalam bentuk baru yang diperoleh dengan mengubah atau menggabungkan data yang ada dari database. [3]
+Administrasi – Mendaftar dan memantau pengguna, menegakkan keamanan data, memantau kinerja, menjaga integritas data, menangani kontrol konkurensi, dan memulihkan informasi yang telah rusak oleh beberapa peristiwa seperti kegagalan sistem yang tidak terduga. [4]
+Baik database dan DBMS-nya sesuai dengan prinsip-prinsip model database tertentu . [5] "Sistem basis data" mengacu secara kolektif ke model basis data, sistem manajemen basis data, dan basis data. [6]
+
+Secara fisik, server database adalah komputer khusus yang menyimpan database aktual dan hanya menjalankan DBMS dan perangkat lunak terkait. Server database biasanya komputer multiprosesor , dengan memori yang besar dan array disk RAID yang digunakan untuk penyimpanan yang stabil. Akselerator basis data perangkat keras, yang terhubung ke satu atau lebih server melalui saluran berkecepatan tinggi, juga digunakan dalam lingkungan pemrosesan transaksi volume besar. DBMS ditemukan di jantung sebagian besar aplikasi database . DBMS dapat dibangun di sekitar kernel multitasking kustom dengan dukungan jaringan built-in , tetapi DBMS modern biasanya mengandalkan sistem operasi standar untuk menyediakan fungsi-fungsi ini.[ rujukan? ]
+
+Karena DBMS terdiri dari pasar yang signifikan , vendor komputer dan penyimpanan sering kali mempertimbangkan persyaratan DBMS dalam rencana pengembangan mereka sendiri. [7]
+
+Basis data dan DBMS dapat dikategorikan menurut model basis data yang didukungnya (seperti relasional atau XML), jenis komputer yang dijalankannya (dari cluster server ke ponsel), bahasa kueri ( s) digunakan untuk mengakses database (seperti SQL atau XQuery ), dan rekayasa internalnya, yang memengaruhi kinerja, skalabilitas , ketahanan, dan keamanan.
+
+Sejarah
+Ukuran, kemampuan, dan kinerja database dan DBMS masing-masing telah tumbuh dalam urutan besarnya. Peningkatan kinerja ini dimungkinkan oleh kemajuan teknologi di bidang prosesor , memori komputer , penyimpanan komputer , dan jaringan komputer . Konsep database dimungkinkan oleh munculnya media penyimpanan akses langsung seperti disk magnetik, yang menjadi tersedia secara luas pada pertengahan 1960-an; sistem sebelumnya mengandalkan penyimpanan data berurutan pada pita magnetik. Perkembangan selanjutnya dari teknologi database dapat dibagi menjadi tiga era berdasarkan model atau struktur data: navigasi , [8] SQL/ relasional, dan pasca-relasional.
+
+Dua model data navigasi awal utama adalah model hierarkis dan model CODASYL (model jaringan ). Ini ditandai dengan penggunaan pointer (seringkali alamat disk fisik) untuk mengikuti hubungan dari satu record ke record lainnya.
+
+Model relasional , pertama kali diusulkan pada tahun 1970 oleh Edgar F. Codd , berangkat dari tradisi ini dengan bersikeras bahwa aplikasi harus mencari data dengan konten, bukan dengan mengikuti link. Model relasional menggunakan set tabel gaya buku besar, masing-masing digunakan untuk jenis entitas yang berbeda. Hanya pada pertengahan 1980-an perangkat keras komputasi menjadi cukup kuat untuk memungkinkan penyebaran luas sistem relasional (DBMS plus aplikasi). Namun, pada awal 1990-an, sistem relasional mendominasi di semua aplikasi pemrosesan data berskala besar , dan pada 2018 mereka tetap dominan: IBM Db2 , Oracle , MySQL , dan Microsoft SQL Server adalah yang paling banyak dicariDBMS . [9] Bahasa database yang dominan, SQL standar untuk model relasional, telah mempengaruhi bahasa database untuk model data lainnya. [ rujukan? ]
+
+Database objek dikembangkan pada 1980-an untuk mengatasi ketidaknyamanan ketidakcocokan impedansi objek-relasional , yang menyebabkan munculnya istilah "pasca-relasional" dan juga pengembangan database objek-relasional hybrid .
+
+Generasi berikutnya dari database pasca-relasional di akhir tahun 2000-an dikenal sebagai database NoSQL , memperkenalkan penyimpanan nilai kunci yang cepat dan database berorientasi dokumen . Sebuah "generasi berikutnya" yang bersaing yang dikenal sebagai database NewSQL mencoba implementasi baru yang mempertahankan model relasional/SQL sambil bertujuan untuk mencocokkan kinerja tinggi NoSQL dibandingkan dengan DBMS relasional yang tersedia secara komersial.
+
+1960-an, DBMS navigasi
+Informasi lebih lanjut: Basis data navigasi
+
+Struktur dasar model database CODASYL navigasi
+Pengenalan istilah database bertepatan dengan ketersediaan penyimpanan akses langsung (disk dan drum) dari pertengahan 1960-an dan seterusnya. Istilah ini mewakili kontras dengan sistem berbasis kaset di masa lalu, yang memungkinkan penggunaan interaktif bersama daripada pemrosesan batch harian . Oxford English Dictionary mengutip laporan tahun 1962 oleh System Development Corporation of California sebagai yang pertama menggunakan istilah "basis data" dalam pengertian teknis tertentu. [10]
+
+Sebagai komputer tumbuh dalam kecepatan dan kemampuan, sejumlah sistem database tujuan umum muncul; pada pertengahan 1960-an sejumlah sistem seperti itu mulai digunakan secara komersial. Ketertarikan pada standar mulai tumbuh, dan Charles Bachman , penulis salah satu produk tersebut, Integrated Data Store (IDS), mendirikan Database Task Group dalam CODASYL , grup yang bertanggung jawab atas pembuatan dan standarisasi COBOL . Pada tahun 1971, Database Task Group menyampaikan standar mereka, yang umumnya dikenal sebagai pendekatan CODASYL , dan segera sejumlah produk komersial berdasarkan pendekatan ini memasuki pasar.
+
+Pendekatan CODASYL menawarkan aplikasi kemampuan untuk menavigasi di sekitar kumpulan data terkait yang dibentuk menjadi jaringan besar. Aplikasi dapat menemukan catatan dengan salah satu dari tiga metode:
+
+Penggunaan kunci utama (dikenal sebagai kunci CALC, biasanya diimplementasikan dengan hashing )
+Menavigasi hubungan (disebut set ) dari satu record ke record lainnya
+Memindai semua catatan secara berurutan
+Kemudian sistem menambahkan B-tree untuk menyediakan jalur akses alternatif. Banyak basis data CODASYL juga menambahkan bahasa kueri deklaratif untuk pengguna akhir (berbeda dari API navigasi). Namun, database CODASYL sangat kompleks dan membutuhkan pelatihan dan upaya yang signifikan untuk menghasilkan aplikasi yang berguna.
+
+IBM juga memiliki DBMS sendiri pada tahun 1966, yang dikenal sebagai Sistem Manajemen Informasi (IMS). IMS adalah pengembangan perangkat lunak yang ditulis untuk program Apollo pada System/360 . IMS secara umum memiliki konsep yang mirip dengan CODASYL, tetapi menggunakan hierarki yang ketat untuk model navigasi datanya daripada model jaringan CODASYL. Kedua konsep tersebut kemudian dikenal sebagai database navigasi karena cara data diakses: istilah ini dipopulerkan oleh presentasi Penghargaan Turing tahun 1973 oleh Bachman, The Programmer as Navigator . IMS diklasifikasikan oleh IBM sebagai database hierarkis . IDMS dan Cincom Systems ' TOTALdatabase diklasifikasikan sebagai database jaringan. IMS tetap digunakan pada 2014 . [11]
+
+1970-an, DBMS relasional
+Edgar F. Codd bekerja di IBM di San Jose, California , di salah satu kantor cabang mereka yang terutama terlibat dalam pengembangan sistem hard disk . Dia tidak senang dengan model navigasi pendekatan CODASYL, terutama kurangnya fasilitas "pencarian". Pada tahun 1970, ia menulis sejumlah makalah yang menguraikan pendekatan baru untuk konstruksi basis data yang akhirnya memuncak dalam terobosan Model Data Relasional untuk Bank Data Bersama Besar . [12]
+
+Dalam makalah ini, ia menjelaskan sistem baru untuk menyimpan dan bekerja dengan database besar. Alih-alih catatan disimpan dalam semacam daftar terkait catatan bentuk bebas seperti di CODASYL, ide Codd adalah untuk mengatur data sebagai sejumlah " tabel ", setiap tabel digunakan untuk jenis entitas yang berbeda. Setiap tabel akan berisi sejumlah kolom tetap yang berisi atribut entitas. Satu atau lebih kolom dari setiap tabel ditetapkan sebagai kunci utama yang dengannya baris tabel dapat diidentifikasi secara unik; referensi silang antar tabel selalu menggunakan kunci utama ini, bukan alamat disk, dan kueri akan bergabung dengan tabel berdasarkan hubungan kunci ini, menggunakan serangkaian operasi berdasarkan sistem matematikakalkulus relasional (dari mana model mengambil namanya). Memisahkan data menjadi satu set tabel (atau relasi ) yang dinormalisasi bertujuan untuk memastikan bahwa setiap "fakta" hanya disimpan satu kali, sehingga menyederhanakan operasi pembaruan. Tabel virtual yang disebut tampilan dapat menyajikan data dengan cara yang berbeda untuk pengguna yang berbeda, tetapi tampilan tidak dapat diperbarui secara langsung.
+
+Codd menggunakan istilah matematika untuk mendefinisikan model: relasi, tupel, dan domain daripada tabel, baris, dan kolom. Terminologi yang sekarang akrab berasal dari implementasi awal. Codd kemudian akan mengkritik kecenderungan implementasi praktis untuk berangkat dari dasar matematika yang model didasarkan.
+
+
+Dalam model relasional , catatan "ditautkan" menggunakan kunci virtual yang tidak disimpan dalam database tetapi didefinisikan sesuai kebutuhan antara data yang terkandung dalam catatan.
+Penggunaan kunci utama (pengidentifikasi berorientasi pengguna) untuk mewakili hubungan tabel silang, daripada alamat disk, memiliki dua motivasi utama. Dari perspektif teknik, ini memungkinkan tabel untuk dipindahkan dan diubah ukurannya tanpa reorganisasi database yang mahal. Tetapi Codd lebih tertarik pada perbedaan dalam semantik: penggunaan pengidentifikasi eksplisit membuatnya lebih mudah untuk mendefinisikan operasi pembaruan dengan definisi matematika yang bersih, dan itu juga memungkinkan operasi kueri didefinisikan dalam hal disiplin kalkulus predikat orde pertama yang mapan.; karena operasi ini memiliki properti matematika yang bersih, menjadi mungkin untuk menulis ulang kueri dengan cara yang terbukti benar, yang merupakan dasar dari pengoptimalan kueri. Tidak ada kehilangan ekspresi dibandingkan dengan model hierarkis atau jaringan, meskipun koneksi antar tabel tidak lagi eksplisit.
+
+Dalam model hierarki dan jaringan, catatan diizinkan memiliki struktur internal yang kompleks. Misalnya, riwayat gaji seorang karyawan mungkin direpresentasikan sebagai "grup berulang" dalam catatan karyawan. Dalam model relasional, proses normalisasi menyebabkan struktur internal seperti itu digantikan oleh data yang disimpan dalam beberapa tabel, yang hanya dihubungkan oleh kunci logis.
+
+Misalnya, penggunaan umum dari sistem database adalah untuk melacak informasi tentang pengguna, nama mereka, informasi login, berbagai alamat dan nomor telepon. Dalam pendekatan navigasi, semua data ini akan ditempatkan dalam satu catatan panjang variabel. Dalam pendekatan relasional, data akan dinormalisasi menjadi tabel pengguna, tabel alamat dan tabel nomor telepon (misalnya). Catatan akan dibuat dalam tabel opsional ini hanya jika alamat atau nomor telepon benar-benar diberikan.
+
+Selain mengidentifikasi baris/catatan menggunakan pengidentifikasi logis daripada alamat disk, Codd mengubah cara aplikasi mengumpulkan data dari beberapa catatan. Daripada mengharuskan aplikasi untuk mengumpulkan data satu catatan pada satu waktu dengan menavigasi tautan, mereka akan menggunakan bahasa kueri deklaratif yang menyatakan data apa yang diperlukan, daripada jalur akses yang digunakan untuk menemukannya. Menemukan jalur akses yang efisien ke data menjadi tanggung jawab sistem manajemen basis data, bukan pemrogram aplikasi. Proses ini, yang disebut optimasi kueri, bergantung pada fakta bahwa kueri diekspresikan dalam bentuk logika matematika.
+
+Makalah Codd diambil oleh dua orang di Berkeley, Eugene Wong dan Michael Stonebraker . Mereka memulai proyek yang dikenal sebagai INGRES menggunakan dana yang telah dialokasikan untuk proyek basis data geografis dan pemrogram mahasiswa untuk menghasilkan kode. Mulai tahun 1973, INGRES mengirimkan produk uji pertamanya yang umumnya siap digunakan secara luas pada tahun 1979. INGRES mirip dengan Sistem R dalam beberapa hal, termasuk penggunaan "bahasa" untuk akses data , yang dikenal sebagai QUEL . Seiring waktu, INGRES pindah ke standar SQL yang muncul.
+
+IBM sendiri melakukan satu uji implementasi model relasional, PRTV , dan satu produksi, Sistem Bisnis 12 , keduanya sekarang dihentikan. Honeywell menulis MRDS untuk Multics , dan sekarang ada dua implementasi baru: Alphora Dataphor dan Rel . Sebagian besar implementasi DBMS lain yang biasanya disebut relasional sebenarnya adalah DBMS SQL.
+
+Pada tahun 1970, University of Michigan memulai pengembangan Sistem Manajemen Informasi MICRO [13] berdasarkan model Data Teori Set DL Childs . [14] [15] [16] MICRO digunakan untuk mengelola kumpulan data yang sangat besar oleh Departemen Tenaga Kerja AS , Badan Perlindungan Lingkungan AS , dan peneliti dari Universitas Alberta , Universitas Michigan , dan Universitas Negeri Wayne . Itu berjalan di komputer mainframe IBM menggunakan Sistem Terminal Michigan . [17] Sistem ini tetap diproduksi hingga tahun 1998.
+
+Pendekatan terintegrasi
+Artikel utama: Mesin database
+Pada 1970-an dan 1980-an, upaya dilakukan untuk membangun sistem database dengan perangkat keras dan perangkat lunak yang terintegrasi. Filosofi yang mendasari adalah bahwa integrasi tersebut akan memberikan kinerja yang lebih tinggi dengan biaya yang lebih rendah. Contohnya adalah IBM System/38 , penawaran awal Teradata , dan mesin database Britton Lee, Inc.
+
+Pendekatan lain untuk dukungan perangkat keras untuk manajemen basis data adalah akselerator CAFS ICL , pengontrol disk perangkat keras dengan kemampuan pencarian yang dapat diprogram. Dalam jangka panjang, upaya ini umumnya tidak berhasil karena mesin database khusus tidak dapat mengikuti perkembangan pesat dan kemajuan komputer tujuan umum. Jadi kebanyakan sistem basis data saat ini adalah sistem perangkat lunak yang berjalan pada perangkat keras untuk keperluan umum, menggunakan penyimpanan data komputer untuk keperluan umum. Namun, ide ini masih dikejar dalam aplikasi tertentu oleh beberapa perusahaan seperti Netezza dan Oracle ( Exadata ).
+
+Akhir 1970-an, SQL DBMS
+IBM mulai mengerjakan sistem prototipe secara longgar berdasarkan konsep Codd sebagai Sistem R pada awal 1970-an. Versi pertama siap pada tahun 1974/5, dan kemudian mulai bekerja pada sistem multi-tabel di mana data dapat dibagi sehingga semua data untuk catatan (beberapa di antaranya opsional) tidak harus disimpan dalam "potongan" besar tunggal. Versi multi-pengguna berikutnya diuji oleh pelanggan pada tahun 1978 dan 1979, pada saat itu bahasa kueri standar – SQL [ rujukan? ] – telah ditambahkan. Gagasan Codd memantapkan diri sebagai dapat diterapkan dan lebih unggul dari CODASYL, mendorong IBM untuk mengembangkan versi produksi yang sebenarnya dari Sistem R, yang dikenal sebagai SQL/DS , dan, kemudian, Database 2 (IBM Db2 ).
+
+Oracle Database Larry Ellison (atau lebih sederhananya, Oracle ) dimulai dari rantai yang berbeda, berdasarkan makalah IBM tentang System R. Meskipun implementasi Oracle V1 selesai pada tahun 1978, tidak sampai Oracle Versi 2 ketika Ellison mengalahkan IBM ke pasar pada tahun 1979. [18]
+
+Stonebraker melanjutkan untuk menerapkan pelajaran dari INGRES untuk mengembangkan database baru, Postgres, yang sekarang dikenal sebagai PostgreSQL . PostgreSQL sering digunakan untuk aplikasi misi-kritis global (pendaftar nama domain .org dan .info menggunakannya sebagai penyimpanan data utama mereka , seperti halnya banyak perusahaan besar dan lembaga keuangan).
+
+Di Swedia, makalah Codd juga dibaca dan Mimer SQL dikembangkan pada pertengahan 1970-an di Universitas Uppsala . Pada tahun 1984, proyek ini dikonsolidasikan menjadi perusahaan independen.
+
+Model data lain, model hubungan entitas , muncul pada tahun 1976 dan mendapatkan popularitas untuk desain database karena menekankan deskripsi yang lebih akrab daripada model relasional sebelumnya. Kemudian, konstruksi entitas-hubungan dipasang sebagai konstruksi pemodelan data untuk model relasional, dan perbedaan antara keduanya menjadi tidak relevan. [ rujukan? ]
+
+1980-an, di desktop
+Tahun 1980-an mengantarkan era komputasi desktop . Komputer baru memberdayakan penggunanya dengan spreadsheet seperti Lotus 1-2-3 dan perangkat lunak database seperti dBASE . Produk dBASE ringan dan mudah dipahami oleh pengguna komputer mana pun. C. Wayne Ratliff , pencipta dBASE, menyatakan: "dBASE berbeda dari program seperti BASIC, C, FORTRAN, dan COBOL karena banyak pekerjaan kotor telah dilakukan. Manipulasi data dilakukan oleh dBASE bukan oleh pengguna, sehingga pengguna dapat berkonsentrasi pada apa yang dia lakukan, daripada harus mengacaukan detail kotor membuka, membaca, dan menutup file, dan mengelola alokasi ruang." [19]dBASE adalah salah satu judul perangkat lunak terlaris di tahun 1980-an dan awal 1990-an.
+
+1990-an, berorientasi objek
+The 1990s, along with a rise in object-oriented programming, saw a growth in how data in various databases were handled. Programmers and designers began to treat the data in their databases as objects. That is to say that if a person's data were in a database, that person's attributes, such as their address, phone number, and age, were now considered to belong to that person instead of being extraneous data. This allows for relations between data to be related to objects and their attributes and not to individual fields.[20] The term "object–relational impedance mismatch" described the inconvenience of translating between programmed objects and database tables. Object databases and object–relational databases attempt to solve this problem by providing an object-oriented language (sometimes as extensions to SQL) that programmers can use as alternative to purely relational SQL. On the programming side, libraries known as object–relational mappings (ORMs) attempt to solve the same problem.
+
+2000s, NoSQL and NewSQL
+Main articles: NoSQL and NewSQL
+XML databases are a type of structured document-oriented database that allows querying based on XML document attributes. XML databases are mostly used in applications where the data is conveniently viewed as a collection of documents, with a structure that can vary from the very flexible to the highly rigid: examples include scientific articles, patents, tax filings, and personnel records.
+
+NoSQL databases are often very fast, do not require fixed table schemas, avoid join operations by storing denormalized data, and are designed to scale horizontally.
+
+In recent years, there has been a strong demand for massively distributed databases with high partition tolerance, but according to the CAP theorem, it is impossible for a distributed system to simultaneously provide consistency, availability, and partition tolerance guarantees. A distributed system can satisfy any two of these guarantees at the same time, but not all three. For that reason, many NoSQL databases are using what is called eventual consistency to provide both availability and partition tolerance guarantees with a reduced level of data consistency.
+
+NewSQL is a class of modern relational databases that aims to provide the same scalable performance of NoSQL systems for online transaction processing (read-write) workloads while still using SQL and maintaining the ACID guarantees of a traditional database system.
+
+Use cases
+
+This section does not cite any sources. Please help improve this section by adding citations to reliable sources. Unsourced material may be challenged and removed. (March 2013) (Learn how and when to remove this template message)
+Databases are used to support internal operations of organizations and to underpin online interactions with customers and suppliers (see Enterprise software).
+
+Databases are used to hold administrative information and more specialized data, such as engineering data or economic models. Examples include computerized library systems, flight reservation systems, computerized parts inventory systems, and many content management systems that store websites as collections of webpages in a database.
+
+Classification
+One way to classify databases involves the type of their contents, for example: bibliographic, document-text, statistical, or multimedia objects. Another way is by their application area, for example: accounting, music compositions, movies, banking, manufacturing, or insurance. A third way is by some technical aspect, such as the database structure or interface type. This section lists a few of the adjectives used to characterize different kinds of databases.
+
+An in-memory database is a database that primarily resides in main memory, but is typically backed-up by non-volatile computer data storage. Main memory databases are faster than disk databases, and so are often used where response time is critical, such as in telecommunications network equipment.
+An active database includes an event-driven architecture which can respond to conditions both inside and outside the database. Possible uses include security monitoring, alerting, statistics gathering and authorization. Many databases provide active database features in the form of database triggers.
+A cloud database relies on cloud technology. Both the database and most of its DBMS reside remotely, "in the cloud", while its applications are both developed by programmers and later maintained and used by end-users through a web browser and Open APIs.
+Data warehouses archive data from operational databases and often from external sources such as market research firms. The warehouse becomes the central source of data for use by managers and other end-users who may not have access to operational data. For example, sales data might be aggregated to weekly totals and converted from internal product codes to use UPCs so that they can be compared with ACNielsen data. Some basic and essential components of data warehousing include extracting, analyzing, and mining data, transforming, loading, and managing data so as to make them available for further use.
+A deductive database combines logic programming with a relational database.
+A distributed database is one in which both the data and the DBMS span multiple computers.
+A document-oriented database is designed for storing, retrieving, and managing document-oriented, or semi structured, information. Document-oriented databases are one of the main categories of NoSQL databases.
+An embedded database system is a DBMS which is tightly integrated with an application software that requires access to stored data in such a way that the DBMS is hidden from the application's end-users and requires little or no ongoing maintenance.[21]
+End-user databases consist of data developed by individual end-users. Examples of these are collections of documents, spreadsheets, presentations, multimedia, and other files. Several products exist to support such databases. Some of them are much simpler than full-fledged DBMSs, with more elementary DBMS functionality.
+A federated database system comprises several distinct databases, each with its own DBMS. It is handled as a single database by a federated database management system (FDBMS), which transparently integrates multiple autonomous DBMSs, possibly of different types (in which case it would also be a heterogeneous database system), and provides them with an integrated conceptual view.
+Sometimes the term multi-database is used as a synonym for federated database, though it may refer to a less integrated (e.g., without an FDBMS and a managed integrated schema) group of databases that cooperate in a single application. In this case, typically middleware is used for distribution, which typically includes an atomic commit protocol (ACP), e.g., the two-phase commit protocol, to allow distributed (global) transactions across the participating databases.
+A graph database is a kind of NoSQL database that uses graph structures with nodes, edges, and properties to represent and store information. General graph databases that can store any graph are distinct from specialized graph databases such as triplestores and network databases.
+An array DBMS is a kind of NoSQL DBMS that allows modeling, storage, and retrieval of (usually large) multi-dimensional arrays such as satellite images and climate simulation output.
+In a hypertext or hypermedia database, any word or a piece of text representing an object, e.g., another piece of text, an article, a picture, or a film, can be hyperlinked to that object. Hypertext databases are particularly useful for organizing large amounts of disparate information. For example, they are useful for organizing online encyclopedias, where users can conveniently jump around the text. The World Wide Web is thus a large distributed hypertext database.
+A knowledge base (abbreviated KB, kb or Δ[22][23]) is a special kind of database for knowledge management, providing the means for the computerized collection, organization, and retrieval of knowledge. Also a collection of data representing problems with their solutions and related experiences.
+A mobile database can be carried on or synchronized from a mobile computing device.
+Operational databases store detailed data about the operations of an organization. They typically process relatively high volumes of updates using transactions. Examples include customer databases that record contact, credit, and demographic information about a business's customers, personnel databases that hold information such as salary, benefits, skills data about employees, enterprise resource planning systems that record details about product components, parts inventory, and financial databases that keep track of the organization's money, accounting and financial dealings.
+A parallel database seeks to improve performance through parallelization for tasks such as loading data, building indexes and evaluating queries.
+The major parallel DBMS architectures which are induced by the underlying hardware architecture are:
+Shared memory architecture, where multiple processors share the main memory space, as well as other data storage.
+Shared disk architecture, where each processing unit (typically consisting of multiple processors) has its own main memory, but all units share the other storage.
+Shared-nothing architecture, where each processing unit has its own main memory and other storage.
+Probabilistic databases employ fuzzy logic to draw inferences from imprecise data.
+Real-time databases process transactions fast enough for the result to come back and be acted on right away.
+A spatial database can store the data with multidimensional features. The queries on such data include location-based queries, like "Where is the closest hotel in my area?".
+A temporal database has built-in time aspects, for example a temporal data model and a temporal version of SQL. More specifically the temporal aspects usually include valid-time and transaction-time.
+A terminology-oriented database builds upon an object-oriented database, often customized for a specific field.
+An unstructured data database is intended to store in a manageable and protected way diverse objects that do not fit naturally and conveniently in common databases. It may include email messages, documents, journals, multimedia objects, etc. The name may be misleading since some objects can be highly structured. However, the entire possible object collection does not fit into a predefined structured framework. Most established DBMSs now support unstructured data in various ways, and new dedicated DBMSs are emerging.
+Database management system
+Connolly and Begg define database management system (DBMS) as a "software system that enables users to define, create, maintain and control access to the database".[24] Examples of DBMS's include MySQL, PostgreSQL, Microsoft SQL Server, Oracle Database, and Microsoft Access.
+
+The DBMS acronym is sometimes extended to indicate the underlying database model, with RDBMS for the relational, OODBMS for the object (oriented) and ORDBMS for the object–relational model. Other extensions can indicate some other characteristics, such as DDBMS for a distributed database management systems.
+
+The functionality provided by a DBMS can vary enormously. The core functionality is the storage, retrieval and update of data. Codd proposed the following functions and services a fully-fledged general purpose DBMS should provide:[25]
+
+Data storage, retrieval and update
+User accessible catalog or data dictionary describing the metadata
+Support for transactions and concurrency
+Facilities for recovering the database should it become damaged
+Support for authorization of access and update of data
+Access support from remote locations
+Enforcing constraints to ensure data in the database abides by certain rules
+It is also generally to be expected the DBMS will provide a set of utilities for such purposes as may be necessary to administer the database effectively, including import, export, monitoring, defragmentation and analysis utilities.[26] The core part of the DBMS interacting between the database and the application interface sometimes referred to as the database engine.
+
+Often DBMSs will have configuration parameters that can be statically and dynamically tuned, for example the maximum amount of main memory on a server the database can use. The trend is to minimize the amount of manual configuration, and for cases such as embedded databases the need to target zero-administration is paramount.
+
+The large major enterprise DBMSs have tended to increase in size and functionality and can have involved thousands of human years of development effort throughout their lifetime.[a]
+
+Early multi-user DBMS typically only allowed for the application to reside on the same computer with access via terminals or terminal emulation software. The client–server architecture was a development where the application resided on a client desktop and the database on a server allowing the processing to be distributed. This evolved into a multitier architecture incorporating application servers and web servers with the end user interface via a web browser with the database only directly connected to the adjacent tier.[27]
+
+A general-purpose DBMS will provide public application programming interfaces (API) and optionally a processor for database languages such as SQL to allow applications to be written to interact with and manipulate the database. A special purpose DBMS may use a private API and be specifically customized and linked to a single application. For example, an email system performs many of the functions of a general-purpose DBMS such as message insertion, message deletion, attachment handling, blocklist lookup, associating messages an email address and so forth however these functions are limited to what is required to handle email.
+
+Application
+Main article: Database application
+External interaction with the database will be via an application program that interfaces with the DBMS.[28] This can range from a database tool that allows users to execute SQL queries textually or graphically, to a website that happens to use a database to store and search information.
+
+Application program interface
+A programmer will code interactions to the database (sometimes referred to as a datasource) via an application program interface (API) or via a database language. The particular API or language chosen will need to be supported by DBMS, possibly indirectly via a preprocessor or a bridging API. Some API's aim to be database independent, ODBC being a commonly known example. Other common API's include JDBC and ADO.NET.
+
+Database languages
+Database languages are special-purpose languages, which allow one or more of the following tasks, sometimes distinguished as sublanguages:
+
+Data control language (DCL) – controls access to data;
+Data definition language (DDL) – defines data types such as creating, altering, or dropping tables and the relationships among them;
+Data manipulation language (DML) – performs tasks such as inserting, updating, or deleting data occurrences;
+Data query language (DQL) – allows searching for information and computing derived information.
+Database languages are specific to a particular data model. Notable examples include:
+
+SQL combines the roles of data definition, data manipulation, and query in a single language. It was one of the first commercial languages for the relational model, although it departs in some respects from the relational model as described by Codd (for example, the rows and columns of a table can be ordered). SQL became a standard of the American National Standards Institute (ANSI) in 1986, and of the International Organization for Standardization (ISO) in 1987. The standards have been regularly enhanced since and are supported (with varying degrees of conformance) by all mainstream commercial relational DBMSs.[29][30]
+OQL is an object model language standard (from the Object Data Management Group). It has influenced the design of some of the newer query languages like JDOQL and EJB QL.
+XQuery is a standard XML query language implemented by XML database systems such as MarkLogic and eXist, by relational databases with XML capability such as Oracle and Db2, and also by in-memory XML processors such as Saxon.
+SQL/XML combines XQuery with SQL.[31]
+A database language may also incorporate features like:
+
+DBMS-specific configuration and storage engine management
+Computations to modify query results, like counting, summing, averaging, sorting, grouping, and cross-referencing
+Constraint enforcement (e.g. in an automotive database, only allowing one engine type per car)
+Application programming interface version of the query language, for programmer convenience
+Storage
+Main articles: Computer data storage and Database engine
+Database storage is the container of the physical materialization of a database. It comprises the internal (physical) level in the database architecture. It also contains all the information needed (e.g., metadata, "data about the data", and internal data structures) to reconstruct the conceptual level and external level from the internal level when needed. Databases as digital objects contain three layers of information which must be stored: the data, the structure, and the semantics. Proper storage of all three layers is needed for future preservation and longevity of the database.[32] Putting data into permanent storage is generally the responsibility of the database engine a.k.a. "storage engine". Though typically accessed by a DBMS through the underlying operating system (and often using the operating systems' file systems as intermediates for storage layout), storage properties and configuration settings are extremely important for the efficient operation of the DBMS, and thus are closely maintained by database administrators. A DBMS, while in operation, always has its database residing in several types of storage (e.g., memory and external storage). The database data and the additional needed information, possibly in very large amounts, are coded into bits. Data typically reside in the storage in structures that look completely different from the way the data look at the conceptual and external levels, but in ways that attempt to optimize (the best possible) these levels' reconstruction when needed by users and programs, as well as for computing additional types of needed information from the data (e.g., when querying the database).
+
+Some DBMSs support specifying which character encoding was used to store data, so multiple encodings can be used in the same database.
+
+Various low-level database storage structures are used by the storage engine to serialize the data model so it can be written to the medium of choice. Techniques such as indexing may be used to improve performance. Conventional storage is row-oriented, but there are also column-oriented and correlation databases.
+
+Materialized views
+Main article: Materialized view
+Often storage redundancy is employed to increase performance. A common example is storing materialized views, which consist of frequently needed external views or query results. Storing such views saves the expensive computing them each time they are needed. The downsides of materialized views are the overhead incurred when updating them to keep them synchronized with their original updated database data, and the cost of storage redundancy.
+
+Replication
+See also: Replication (computing) § Database replication
+Occasionally a database employs storage redundancy by database objects replication (with one or more copies) to increase data availability (both to improve performance of simultaneous multiple end-user accesses to the same database object, and to provide resiliency in a case of partial failure of a distributed database). Updates of a replicated object need to be synchronized across the object copies. In many cases, the entire database is replicated.
+
+Security
+Accuracy dispute
+This article appears to contradict the article Database security. Please see discussion on the linked talk page. (March 2013) (Learn how and when to remove this template message)
+Main article: Database security
+Database security deals with all various aspects of protecting the database content, its owners, and its users. It ranges from protection from intentional unauthorized database uses to unintentional database accesses by unauthorized entities (e.g., a person or a computer program).
+
+Database access control deals with controlling who (a person or a certain computer program) are allowed to access what information in the database. The information may comprise specific database objects (e.g., record types, specific records, data structures), certain computations over certain objects (e.g., query types, or specific queries), or using specific access paths to the former (e.g., using specific indexes or other data structures to access information). Database access controls are set by special authorized (by the database owner) personnel that uses dedicated protected security DBMS interfaces.
+
+This may be managed directly on an individual basis, or by the assignment of individuals and privileges to groups, or (in the most elaborate models) through the assignment of individuals and groups to roles which are then granted entitlements. Data security prevents unauthorized users from viewing or updating the database. Using passwords, users are allowed access to the entire database or subsets of it called "subschemas". For example, an employee database can contain all the data about an individual employee, but one group of users may be authorized to view only payroll data, while others are allowed access to only work history and medical data. If the DBMS provides a way to interactively enter and update the database, as well as interrogate it, this capability allows for managing personal databases.
+
+Data security in general deals with protecting specific chunks of data, both physically (i.e., from corruption, or destruction, or removal; e.g., see physical security), or the interpretation of them, or parts of them to meaningful information (e.g., by looking at the strings of bits that they comprise, concluding specific valid credit-card numbers; e.g., see data encryption).
+
+Change and access logging records who accessed which attributes, what was changed, and when it was changed. Logging services allow for a forensic database audit later by keeping a record of access occurrences and changes. Sometimes application-level code is used to record changes rather than leaving this in the database. Monitoring can be set up to attempt to detect security breaches. Therefore, organizations must take database security seriously because of the many benefits it provides. Organizations will be safeguarded from security breaches and hacking activities like firewall intrusion, virus spread, and ransom ware. This helps in protecting the company’s essential information, which cannot be shared with outsiders at any cause.[33]
+
+Transactions and concurrency
+Further information: Concurrency control
+Database transactions can be used to introduce some level of fault tolerance and data integrity after recovery from a crash. A database transaction is a unit of work, typically encapsulating a number of operations over a database (e.g., reading a database object, writing, acquiring or releasing a lock, etc.), an abstraction supported in database and also other systems. Each transaction has well defined boundaries in terms of which program/code executions are included in that transaction (determined by the transaction's programmer via special transaction commands).
+
+The acronym ACID describes some ideal properties of a database transaction: atomicity, consistency, isolation, and durability.
+
+Migration
+See also: Data migration § Database migration
+A database built with one DBMS is not portable to another DBMS (i.e., the other DBMS cannot run it). However, in some situations, it is desirable to migrate a database from one DBMS to another. The reasons are primarily economical (different DBMSs may have different total costs of ownership or TCOs), functional, and operational (different DBMSs may have different capabilities). The migration involves the database's transformation from one DBMS type to another. The transformation should maintain (if possible) the database related application (i.e., all related application programs) intact. Thus, the database's conceptual and external architectural levels should be maintained in the transformation. It may be desired that also some aspects of the architecture internal level are maintained. A complex or large database migration may be a complicated and costly (one-time) project by itself, which should be factored into the decision to migrate. This is in spite of the fact that tools may exist to help migration between specific DBMSs. Typically, a DBMS vendor provides tools to help import databases from other popular DBMSs.
+
+Building, maintaining, and tuning
+Main article: Database tuning
+After designing a database for an application, the next stage is building the database. Typically, an appropriate general-purpose DBMS can be selected to be used for this purpose. A DBMS provides the needed user interfaces to be used by database administrators to define the needed application's data structures within the DBMS's respective data model. Other user interfaces are used to select needed DBMS parameters (like security related, storage allocation parameters, etc.).
+
+When the database is ready (all its data structures and other needed components are defined), it is typically populated with initial application's data (database initialization, which is typically a distinct project; in many cases using specialized DBMS interfaces that support bulk insertion) before making it operational. In some cases, the database becomes operational while empty of application data, and data are accumulated during its operation.
+
+After the database is created, initialized and populated it needs to be maintained. Various database parameters may need changing and the database may need to be tuned (tuning) for better performance; application's data structures may be changed or added, new related application programs may be written to add to the application's functionality, etc.
+
+Backup and restore
+Main article: Backup
+Sometimes it is desired to bring a database back to a previous state (for many reasons, e.g., cases when the database is found corrupted due to a software error, or if it has been updated with erroneous data). To achieve this, a backup operation is done occasionally or continuously, where each desired database state (i.e., the values of its data and their embedding in database's data structures) is kept within dedicated backup files (many techniques exist to do this effectively). When it is decided by a database administrator to bring the database back to this state (e.g., by specifying this state by a desired point in time when the database was in this state), these files are used to restore that state.
+
+Static analysis
+Static analysis techniques for software verification can be applied also in the scenario of query languages. In particular, the *Abstract interpretation framework has been extended to the field of query languages for relational databases as a way to support sound approximation techniques.[34] The semantics of query languages can be tuned according to suitable abstractions of the concrete domain of data. The abstraction of relational database systems has many interesting applications, in particular, for security purposes, such as fine-grained access control, watermarking, etc.
+
+Miscellaneous features
+Other DBMS features might include:
+
+Database logs – This helps in keeping a history of the executed functions.
+Graphics component for producing graphs and charts, especially in a data warehouse system.
+Query optimizer – Performs query optimization on every query to choose an efficient query plan (a partial order (tree) of operations) to be executed to compute the query result. May be specific to a particular storage engine.
+Tools or hooks for database design, application programming, application program maintenance, database performance analysis and monitoring, database configuration monitoring, DBMS hardware configuration (a DBMS and related database may span computers, networks, and storage units) and related database mapping (especially for a distributed DBMS), storage allocation and database layout monitoring, storage migration, etc.
+Increasingly, there are calls for a single system that incorporates all of these core functionalities into the same build, test, and deployment framework for database management and source control. Borrowing from other developments in the software industry, some market such offerings as "DevOps for database".[35]
+
+Design and modeling
+Main article: Database design
+Process of database design v2.png
+The first task of a database designer is to produce a conceptual data model that reflects the structure of the information to be held in the database. A common approach to this is to develop an entity–relationship model, often with the aid of drawing tools. Another popular approach is the Unified Modeling Language. A successful data model will accurately reflect the possible state of the external world being modeled: for example, if people can have more than one phone number, it will allow this information to be captured. Designing a good conceptual data model requires a good understanding of the application domain; it typically involves asking deep questions about the things of interest to an organization, like "can a customer also be a supplier?", or "if a product is sold with two different forms of packaging, are those the same product or different products?", or "if a plane flies from New York to Dubai via Frankfurt, is that one flight or two (or maybe even three)?". The answers to these questions establish definitions of the terminology used for entities (customers, products, flights, flight segments) and their relationships and attributes.
+
+Producing the conceptual data model sometimes involves input from business processes, or the analysis of workflow in the organization. This can help to establish what information is needed in the database, and what can be left out. For example, it can help when deciding whether the database needs to hold historic data as well as current data.
+
+Having produced a conceptual data model that users are happy with, the next stage is to translate this into a schema that implements the relevant data structures within the database. This process is often called logical database design, and the output is a logical data model expressed in the form of a schema. Whereas the conceptual data model is (in theory at least) independent of the choice of database technology, the logical data model will be expressed in terms of a particular database model supported by the chosen DBMS. (The terms data model and database model are often used interchangeably, but in this article we use data model for the design of a specific database, and database model for the modeling notation used to express that design).
+
+The most popular database model for general-purpose databases is the relational model, or more precisely, the relational model as represented by the SQL language. The process of creating a logical database design using this model uses a methodical approach known as normalization. The goal of normalization is to ensure that each elementary "fact" is only recorded in one place, so that insertions, updates, and deletions automatically maintain consistency.
+
+The final stage of database design is to make the decisions that affect performance, scalability, recovery, security, and the like, which depend on the particular DBMS. This is often called physical database design, and the output is the physical data model. A key goal during this stage is data independence, meaning that the decisions made for performance optimization purposes should be invisible to end-users and applications. There are two types of data independence: Physical data independence and logical data independence. Physical design is driven mainly by performance requirements, and requires a good knowledge of the expected workload and access patterns, and a deep understanding of the features offered by the chosen DBMS.
+
+Another aspect of physical database design is security. It involves both defining access control to database objects as well as defining security levels and methods for the data itself.
+
+Models
+Main article: Database model
+
+Collage of five types of database models
+A database model is a type of data model that determines the logical structure of a database and fundamentally determines in which manner data can be stored, organized, and manipulated. The most popular example of a database model is the relational model (or the SQL approximation of relational), which uses a table-based format.
+
+Common logical data models for databases include:
+
+Navigational databases
+Hierarchical database model
+Network model
+Graph database
+Relational model
+Entity–relationship model
+Enhanced entity–relationship model
+Object model
+Document model
+Entity–attribute–value model
+Star schema
+An object–relational database combines the two related structures.
+
+Physical data models include:
+
+Inverted index
+Flat file
+Other models include:
+
+Multidimensional model
+Array model
+Multivalue model
+Specialized models are optimized for particular types of data:
+
+XML database
+Semantic model
+Content store
+Event store
+Time series model
+External, conceptual, and internal views
+
+Traditional view of data[36]
+A database management system provides three views of the database data:
+
+The external level defines how each group of end-users sees the organization of data in the database. A single database can have any number of views at the external level.
+The conceptual level unifies the various external views into a compatible global view.[37] It provides the synthesis of all the external views. It is out of the scope of the various database end-users, and is rather of interest to database application developers and database administrators.
+The internal level (or physical level) is the internal organization of data inside a DBMS. It is concerned with cost, performance, scalability and other operational matters. It deals with storage layout of the data, using storage structures such as indexes to enhance performance. Occasionally it stores data of individual views (materialized views), computed from generic data, if performance justification exists for such redundancy. It balances all the external views' performance requirements, possibly conflicting, in an attempt to optimize overall performance across all activities.
+While there is typically only one conceptual (or logical) and physical (or internal) view of the data, there can be any number of different external views. This allows users to see database information in a more business-related way rather than from a technical, processing viewpoint. For example, a financial department of a company needs the payment details of all employees as part of the company's expenses, but does not need details about employees that are in the interest of the human resources department. Thus different departments need different views of the company's database.
+
+The three-level database architecture relates to the concept of data independence which was one of the major initial driving forces of the relational model. The idea is that changes made at a certain level do not affect the view at a higher level. For example, changes in the internal level do not affect application programs written using conceptual level interfaces, which reduces the impact of making physical changes to improve performance.
+
+The conceptual view provides a level of indirection between internal and external. On one hand it provides a common view of the database, independent of different external view structures, and on the other hand it abstracts away details of how the data are stored or managed (internal level). In principle every level, and even every external view, can be presented by a different data model. In practice usually a given DBMS uses the same data model for both the external and the conceptual levels (e.g., relational model). The internal level, which is hidden inside the DBMS and depends on its implementation, requires a different level of detail and uses its own types of data structure types.
+
+Separating the external, conceptual and internal levels was a major feature of the relational database model implementations that dominate 21st century databases.[37]
+
+Research
+Database technology has been an active research topic since the 1960s, both in academia and in the research and development groups of companies (for example IBM Research). Research activity includes theory and development of prototypes. Notable research topics have included models, the atomic transaction concept, related concurrency control techniques, query languages and query optimization methods, RAID, and more.
+
+The database research area has several dedicated academic journals (for example, ACM Transactions on Database Systems-TODS, Data and Knowledge Engineering-DKE) and annual conferences (e.g., ACM SIGMOD, ACM PODS, VLDB, IEEE ICDE).
+
+See also
+For a topical guide, see Outline of databases.
+Comparison of database tools
+Comparison of object database management systems
+Comparison of object–relational database management systems
+Comparison of relational database management systems
+Data hierarchy
+Data bank
+Data store
+Database theory
+Database testing
+Database-centric architecture
+Flat-file database
+INP (database)
+Journal of Database Management
+Question-focused dataset
+Notes
+ This article quotes a development time of 5 years involving 750 people for DB2 release 9 alone.(Chong et al. 2007)
+References
+ Ullman & Widom 1997, p. 1.
+ "Update – Definition of update by Merriam-Webster". merriam-webster.com.
+ "Retrieval – Definition of retrieval by Merriam-Webster". merriam-webster.com.
+ "Administration – Definition of administration by Merriam-Webster". merriam-webster.com.
+ Tsitchizris & Lochovsky 1982.
+ Beynon-Davies 2003.
+ Nelson & Nelson 2001.
+ Bachman 1973.
+ "TOPDB Top Database index". pypl.github.io.
+ "database, n". OED Online. Oxford University Press. June 2013. Retrieved July 12, 2013. (Subscription required.)
+ IBM Corporation (October 2013). "IBM Information Management System (IMS) 13 Transaction and Database Servers delivers high performance and low total cost of ownership". Retrieved Feb 20, 2014.
+ Codd 1970.
+ Hershey & Easthope 1972.
+ North 2010.
+ Childs 1968a.
+ Childs 1968b.
+ M.A. Kahn; D.L. Rumelhart; B.L. Bronson (October 1977). MICRO Information Management System (Version 5.0) Reference Manual. Institute of Labor and Industrial Relations (ILIR), University of Michigan and Wayne State University.
+ "Oracle 30th Anniversary Timeline" (PDF). Retrieved 23 August 2017.
+ Interview with Wayne Ratliff. The FoxPro History. Retrieved on 2013-07-12.
+ Development of an object-oriented DBMS; Portland, Oregon, United States; Pages: 472–482; 1986; ISBN 0-89791-204-7
+ Graves, Steve. "COTS Databases For Embedded Systems" Archived 2007-11-14 at the Wayback Machine, Embedded Computing Design magazine, January 2007. Retrieved on August 13, 2008.
+ Argumentation in Artificial Intelligence by Iyad Rahwan, Guillermo R. Simari
+ "OWL DL Semantics". Retrieved 10 December 2010.
+ Connolly & Begg 2014, p. 64.
+ Connolly & Begg 2014, pp. 97–102.
+ Connolly & Begg 2014, p. 102.
+ Connolly & Begg 2014, pp. 106–113.
+ Connolly & Begg 2014, p. 65.
+ Chapple 2005.
+ "Structured Query Language (SQL)". International Business Machines. October 27, 2006. Retrieved 2007-06-10.
+ Wagner 2010.
+ Ramalho, J.C.; Faria, L.; Helder, S.; Coutada, M. (31 December 2013). "Database Preservation Toolkit: A flexible tool to normalize and give access to databases". Biblioteca Nacional de Portugal (BNP). University of Minho.
+ David Y. Chan; Victoria Chiu; Miklos A. Vasarhelyi (2018). Continuous auditing : theory and application (1st ed.). Bingley, UK. ISBN 978-1-78743-413-4. OCLC 1029759767.
+ Halder & Cortesi 2011.
+ Ben Linders (January 28, 2016). "How Database Administration Fits into DevOps". Retrieved April 15, 2017.
+ itl.nist.gov (1993) Integration Definition for Information Modeling (IDEFIX) Archived 2013-12-03 at the Wayback Machine. 21 December 1993.
+ Date 2003, pp. 31–32.
+Sources
+Bachman, Charles W. (1973). "The Programmer as Navigator". Communications of the ACM. 16 (11): 653–658. doi:10.1145/355611.362534.
+Beynon-Davies, Paul (2003). Database Systems (3rd ed.). Palgrave Macmillan. ISBN 978-1403916013.
+Chapple, Mike (2005). "SQL Fundamentals". Databases. About.com. Archived from the original on 22 February 2009. Retrieved 28 January 2009.
+Childs, David L. (1968a). Description of a set-theoretic data structure (PDF) (Technical report). CONCOMP (Research in Conversational Use of Computers) Project. University of Michigan. Technical Report 3.
+Childs, David L. (1968b). Feasibility of a set-theoretic data structure: a general structure based on a reconstituted definition (PDF) (Technical report). CONCOMP (Research in Conversational Use of Computers) Project. University of Michigan. Technical Report 6.
+Chong, Raul F.; Wang, Xiaomei; Dang, Michael; Snow, Dwaine R. (2007). "Introduction to DB2". Understanding DB2: Learning Visually with Examples (2nd ed.). ISBN 978-0131580183. Retrieved 17 March 2013.
+Codd, Edgar F. (1970). "A Relational Model of Data for Large Shared Data Banks" (PDF). Communications of the ACM. 13 (6): 377–387. doi:10.1145/362384.362685. S2CID 207549016.
+Connolly, Thomas M.; Begg, Carolyn E. (2014). Database Systems – A Practical Approach to Design Implementation and Management (6th ed.). Pearson. ISBN 978-1292061184.
+Date, C. J. (2003). An Introduction to Database Systems (8th ed.). Pearson. ISBN 978-0321197849.
+Halder, Raju; Cortesi, Agostino (2011). "Abstract Interpretation of Database Query Languages" (PDF). Computer Languages, Systems & Structures. 38 (2): 123–157. doi:10.1016/j.cl.2011.10.004. ISSN 1477-8424.
+Hershey, William; Easthope, Carol (1972). A set theoretic data structure and retrieval language. Spring Joint Computer Conference, May 1972. ACM SIGIR Forum. Vol. 7, no. 4. pp. 45–55. doi:10.1145/1095495.1095500.
+Nelson, Anne Fulcher; Nelson, William Harris Morehead (2001). Building Electronic Commerce: With Web Database Constructions. Prentice Hall. ISBN 978-0201741308.
+North, Ken (10 March 2010). "Sets, Data Models and Data Independence". Dr. Dobb's. Archived from the original on 24 October 2010.
+Tsitchizris, Dionysios C.; Lochovsky, Fred H. (1982). Data Models. Prentice–Hall. ISBN 978-0131964280.
+Ullman, Jeffrey; Widom, Jennifer (1997). A First Course in Database Systems. Prentice–Hall. ISBN 978-0138613372.
+Wagner, Michael (2010), SQL/XML:2006 – Evaluierung der Standardkonformität ausgewählter Datenbanksysteme, Diplomica Verlag, ISBN 978-3836696098
+Further reading
+Ling Liu and Tamer M. Özsu (Eds.) (2009). "Encyclopedia of Database Systems, 4100 p. 60 illus. ISBN 978-0-387-49616-0.
+Gray, J. and Reuter, A. Transaction Processing: Concepts and Techniques, 1st edition, Morgan Kaufmann Publishers, 1992.
+Kroenke, David M. and David J. Auer. Database Concepts. 3rd ed. New York: Prentice, 2007.
+Raghu Ramakrishnan and Johannes Gehrke, Database Management Systems
+Abraham Silberschatz, Henry F. Korth, S. Sudarshan, Database System Concepts
+Lightstone, S.; Teorey, T.; Nadeau, T. (2007). Physical Database Design: the database professional's guide to exploiting indexes, views, storage, and more. Morgan Kaufmann Press. ISBN 978-0-12-369389-1.
+Teorey, T.; Lightstone, S. and Nadeau, T. Database Modeling & Design: Logical Design, 4th edition, Morgan Kaufmann Press, 2005. ISBN 0-12-685352-5
+External links
+Database
+at Wikipedia's sister projects
+Definitions from Wiktionary
+Media from Commons
+News from Wikinews
+Quotations from Wikiquote
+Teks dari Wikisource
+Buku teks dari Wikibooks
+Sumber daya dari Wikiversity
+Ekstensi File DB  – informasi tentang file dengan ekstensi DB
+Tautan ke artikel terkait
+Kontrol otoritas Edit ini di Wikidata
+Kategori :Sistem manajemen basis dataDatabase
+Menu navigasi
+Belum masuk
+Bicara
+Kontribusi
+Buat Akun
+Gabung
+ArtikelBicara
+MembacaLihat sumberLihat sejarah
+Mencari
+Cari Wikipedia
+Halaman Utama
+Isi
+Peristiwa saat ini
+Artikel acak
+Tentang Wikipedia
+Hubungi kami
+Menyumbangkan
+Menyumbang
+Membantu
+Belajar mengedit
+Portal komunitas
+Perubahan terbaru
+Unggah data
+Peralatan
+Link apa disini
+Perubahan terkait
+Halaman khusus
+Tautan permanen
+Informasi halaman
+Kutip halaman ini
+Item Wikidata
+Cetak/ekspor
+Unduh sebagai PDF
+Versi cetak
+Di proyek lain
+Wikimedia Commons
+Wikiversity
+
+Bahasa
+ال
+Spanyol
+हिन्दी
+Bahasa Indonesia
+Jawa
+bahasa Melayu
+Portugis
+Рский
+中文
+90 lagi
+Edit tautan
+Halaman ini terakhir diedit pada 1 Agustus 2022, pukul 02:34  (UTC) .
+Teks tersedia di bawah Creative Commons Attribution-ShareAlike License 3.0 ; persyaratan tambahan mungkin berlaku. Dengan menggunakan situs ini, Anda menyetujui Persyaratan Penggunaan dan Kebijakan Privasi . Wikipedia® adalah merek dagang terdaftar dari Wikimedia Foundation, Inc. , sebuah organisasi nirlaba.
+Kebijakan pribadiTentang WikipediaPenafianHubungi WikipediaTampilan selulerPengembangStatistikPernyataan cookieYayasan WikimediaDidukung oleh MediaWiki

@@ -1,0 +1,161 @@
+
+Bahasa definisi data
+dari Wikipedia, ensiklopedia gratis
+Langsung ke navigasiLangsung ke pencarian
+Jangan bingung dengan bahasa manipulasi data .
+
+Artikel ini memiliki banyak masalah. Tolong bantu memperbaikinya atau diskusikan masalah ini di halaman pembicaraan . ( Pelajari bagaimana dan kapan harus menghapus pesan template ini )
+Artikel ini membutuhkan kutipan tambahan untuk verifikasi . ( Desember 2012 )
+Artikel ini mungkin memerlukan pembersihan untuk memenuhi standar kualitas Wikipedia . Masalah khusus adalah: artikel berfokus hampir seluruhnya pada SQL. ( Juni 2020 )
+Dalam konteks SQL , definisi data atau bahasa deskripsi data ( DDL ) adalah sintaks untuk membuat dan memodifikasi objek database seperti tabel, indeks, dan pengguna. Pernyataan DDL mirip dengan bahasa pemrograman komputer untuk mendefinisikan struktur data , terutama skema database . Contoh umum pernyataan DDL termasuk CREATE, ALTER, dan DROP.
+
+
+Isi
+1	Sejarah
+2	Bahasa Kueri Terstruktur (SQL)
+2.1	BUAT pernyataan
+2.1.1	pernyataan BUAT TABEL
+2.2	DROP pernyataan
+2.3	ALTER pernyataan
+2.4	Pernyataan TRUNCATE
+2.5	Pernyataan integritas referensial
+3	Bahasa lainnya
+4	Lihat juga
+5	Referensi
+6	Tautan eksternal
+Sejarah 
+Konsep bahasa definisi data dan namanya pertama kali diperkenalkan dalam kaitannya dengan model basis data Codasyl , di mana skema basis data ditulis dalam sintaks bahasa yang menggambarkan catatan , bidang , dan set model data pengguna . [1] Kemudian digunakan untuk merujuk ke subset dari Structured Query Language (SQL) untuk mendeklarasikan tabel , kolom, tipe data, dan batasan . SQL-92 memperkenalkan bahasa manipulasi skema dan tabel informasi skema ke skema kueri. [2]Tabel informasi ini ditetapkan sebagai SQL/Schemata di SQL:2003 . Istilah DDL juga digunakan dalam pengertian umum untuk merujuk pada bahasa formal apa pun untuk menggambarkan struktur data atau informasi.
+
+Bahasa Kueri Terstruktur (SQL) 
+Banyak bahasa deskripsi data menggunakan sintaks deklaratif untuk mendefinisikan kolom dan tipe data. Structured Query Language (SQL), bagaimanapun, menggunakan kumpulan kata kerja imperatif yang efeknya adalah untuk memodifikasi skema database dengan menambahkan, mengubah, atau menghapus definisi tabel atau elemen lainnya. Pernyataan ini dapat dicampur dengan bebas dengan pernyataan SQL lainnya, membuat DDL bukan bahasa yang terpisah.
+
+BUAT pernyataan 
+The create command is used to establish a new database, table, index, or stored procedure.
+
+The CREATE statement in SQL creates a component in a relational database management system (RDBMS). In the SQL 1992 specification, the types of components that can be created are schemas, tables, views, domains, character sets, collations, translations, and assertions.[2] Many implementations extend the syntax to allow creation of additional elements, such as indexes and user profiles. Some systems, such as PostgreSQL and SQL Server, allow CREATE, and other DDL commands, inside a database transaction and thus they may be rolled back.[3][4]
+
+CREATE TABLE statement
+A commonly used CREATE command is the CREATE TABLE command. The typical usage is:
+
+CREATE TABLE [table name] ( [column definitions] ) [table parameters]
+The column definitions are:
+
+A comma-separated list consisting of any of the following
+Column definition: [column name] [data type] {NULL | NOT NULL} {column options}
+Primary key definition: PRIMARY KEY ( [comma separated column list] )
+Constraints: {CONSTRAINT} [constraint definition]
+RDBMS specific functionality
+An example statement to create a table named employees with a few columns is:
+
+CREATE TABLE employees (
+    id            INTEGER       PRIMARY KEY,
+    first_name    VARCHAR(50)   not null,
+    last_name     VARCHAR(75)   not null,
+    mid_name      VARCHAR(50)   not null,
+    dateofbirth   DATE          not null
+);
+Some forms of CREATE TABLE DDL may incorporate DML (data manipulation language)-like constructs, such as the CREATE TABLE AS SELECT (CTaS) syntax of SQL.[5]
+
+DROP statement
+The DROP statement destroys an existing database, table, index, or view.
+
+A DROP statement in SQL removes a component from a relational database management system (RDBMS). The types of objects that can be dropped depends on which RDBMS is being used, but most support the dropping of tables, users, and databases. Some systems (such as PostgreSQL) allow DROP and other DDL commands to occur inside of a transaction and thus be rolled back. The typical usage is simply:
+
+DROP objecttype objectname.
+For example, the command to drop a table named employees is:
+
+DROP TABLE employees;
+The DROP statement is distinct from the DELETE and TRUNCATE statements, in that DELETE and TRUNCATE do not remove the table itself. For example, a DELETE statement might delete some (or all) data from a table while leaving the table itself in the database, whereas a DROP statement removes the entire table from the database.
+
+ALTER statement
+The ALTER statement modifies an existing database object.
+
+An ALTER statement in SQL changes the properties of an object inside of a relational database management system (RDBMS). The types of objects that can be altered depends on which RDBMS is being used. The typical usage is:
+
+ALTER objecttype objectname parameters.
+For example, the command to add (then remove) a column named bubbles for an existing table named sink is:
+
+ALTER TABLE sink ADD bubbles INTEGER;
+ALTER TABLE sink DROP COLUMN bubbles;
+TRUNCATE statement
+The TRUNCATE statement is used to delete all data from a table. It's much faster than DELETE.
+
+TRUNCATE TABLE table_name;
+Referential integrity statements
+Another type of DDL sentence in SQL is used to define referential integrity relationships, usually implemented as primary key and foreign key tags in some columns of the tables. These two statements can be included in a CREATE TABLE or an ALTER TABLE sentence;
+
+Other languages
+XML Schema is an example of a DDL for XML.
+JSON Schema is an example of a DDL for JSON.
+DFDL schema is an example of a DDL that can describe many text and binary formats.
+See also
+Data control language
+Data manipulation language
+Data query language
+Select (SQL)
+Insert (SQL)
+Update (SQL)
+Delete (SQL)
+Truncate (SQL)
+References
+ Olle, T. William (1978). The Codasyl Approach to Data Base Management. Wiley. ISBN 0-471-99579-7.
+ "Information Technology - Database Language SQL". SQL92. Carnegie Mellon. Retrieved 12 November 2018.
+ Laudenschlager, Douglas; Milener, Gene; Guyer, Craig; Byham, Rick. "Transactions (Transact-SQL)". Microsoft Docs. Microsoft. Retrieved 12 November 2018.
+ "PostgreSQL Transactions". PostgreSQL 8.3 Documentation. PostgreSQL. Retrieved 12 November 2018.
+ Allen, Grant (2010). The Definitive Guide to SQLite. Apresspod. Mike Owens (2 ed.). Apress. pp. 90–91. ISBN 9781430232254. Diakses 02-10-2012 . Pernyataan buat tabel memiliki sintaks khusus untuk membuat tabel dari pernyataan pilih . [...]: [...] buat tabel makanan2 sebagai pilih * dari makanan; [...] Banyak database lain merujuk pada pendekatan ini sebagai CTaS , yang merupakan singkatan dari Create Table as Select, dan frasa itu tidak jarang di antara pengguna SQLite.
+Tautan eksternal 
+Oracle ALTER TABLE MODIFY kolom
+Perintah DDL Di Oracle
+vte
+Basis data
+Kategori :Bahasa pemodelan dataSQL
+Menu navigasi
+Belum masuk
+Bicara
+Kontribusi
+Buat Akun
+Gabung
+ArtikelBicara
+MembacaSuntingLihat sejarah
+Mencari
+Cari Wikipedia
+Halaman Utama
+Isi
+Peristiwa saat ini
+Artikel acak
+Tentang Wikipedia
+Hubungi kami
+Menyumbangkan
+Menyumbang
+Membantu
+Belajar mengedit
+Portal komunitas
+Perubahan terbaru
+Unggah data
+Peralatan
+Link apa disini
+Perubahan terkait
+Halaman khusus
+Tautan permanen
+Informasi halaman
+Kutip halaman ini
+Item Wikidata
+Cetak/ekspor
+Unduh sebagai PDF
+Versi cetak
+
+Bahasa
+ال
+Jerman
+Spanyol
+Français
+한국어
+日本語
+Portugis
+Рский
+中文
+8 lagi
+Edit tautan
+Halaman ini terakhir diedit pada 8 Agustus 2022, pukul 11:28  (UTC) .
+Teks tersedia di bawah Creative Commons Attribution-ShareAlike License 3.0 ; persyaratan tambahan mungkin berlaku. Dengan menggunakan situs ini, Anda menyetujui Persyaratan Penggunaan dan Kebijakan Privasi . Wikipedia® adalah merek dagang terdaftar dari Wikimedia Foundation, Inc. , sebuah organisasi nirlaba.
+Kebijakan pribadiTentang WikipediaPenafianHubungi WikipediaTampilan selulerPengembangStatistikPernyataan cookieWikimedia FoundationPowered by MediaWiki

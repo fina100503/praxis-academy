@@ -1,0 +1,62 @@
+Lewati ke Konten Utama
+Basis data sumber terbuka paling populer di dunia 
+Hubungi MySQL  |  Masuk  |  Daftar
+MYSQL.COMUNDUHANDOKUMENTASIZONA PENGEMBANG   
+Server MySQL MySQL Enterprise meja kerja Cluster InnoDB Kluster MySQL NDB konektor Lagi
+ 
+Search this Manual
+ 
+Beranda Dokumentasi
+Konektor MySQL/Panduan Pengembang Python
+Kata Pengantar dan Pemberitahuan Hukum
+Pengantar Konektor MySQL/Python
+Panduan untuk Pengembang Python
+Versi Konektor/Python
+Instalasi Konektor/Python
+Contoh Pengkodean Konektor/Python
+Tutorial Konektor/Python
+Pembentukan Koneksi Konektor/Python
+Ekstensi Konektor/Python C
+Konektor/Python Topik Lain
+Referensi API Konektor/Python
+Referensi API Ekstensi Konektor/Python C
+Indeks
+Dokumentasi Terkait
+Unduh Manual ini
+
+
+Konektor MySQL/Panduan Pengembang Python
+Abstrak
+
+Manual ini menjelaskan cara menginstal dan mengkonfigurasi MySQL Connector/Python, driver Python mandiri untuk berkomunikasi dengan server MySQL, dan cara menggunakannya untuk mengembangkan aplikasi database.
+
+MySQL Connector/Python 8.0 sangat disarankan untuk digunakan dengan MySQL Server 8.0, 5.7, dan 5.6. Harap tingkatkan ke Konektor MySQL/Python 8.0.
+
+Untuk catatan yang merinci perubahan di setiap rilis Connector/Python, lihat Catatan Rilis Konektor MySQL/Python .
+
+Untuk informasi hukum, lihat Pemberitahuan Hukum .
+
+Untuk bantuan dalam menggunakan MySQL, silakan kunjungi Forum MySQL , di mana Anda dapat mendiskusikan masalah Anda dengan pengguna MySQL lainnya.
+
+Informasi perizinan.  Produk ini mungkin termasuk perangkat lunak pihak ketiga, yang digunakan di bawah lisensi. MySQL Connector/Python 2.2 Informasi Lisensi Komunitas Panduan Pengguna memiliki informasi tentang lisensi yang terkait dengan rilis komunitas MySQL Connector/Python hingga dan termasuk versi 2.2. MySQL Connector/Python 2.2 Informasi Lisensi Komersial Panduan Pengguna memiliki informasi tentang lisensi yang berkaitan dengan rilis komersial Konektor MySQL/Python hingga dan termasuk versi 2.2. Panduan Pengguna Informasi Lisensi Komunitas MySQL Connector/Python 8.0memiliki informasi tentang lisensi yang berkaitan dengan rilis komunitas MySQL Connector/Python dalam seri rilis 8.0. Panduan Pengguna Informasi Lisensi Komersial MySQL Connector/Python 8.0 memiliki informasi tentang lisensi yang berkaitan dengan rilis komersial Konektor MySQL/Python dalam seri rilis 8.0.
+
+Dokumen dibuat pada: 2022-08-16 (revisi: 73963)
+
+Daftar isi
+
+Kata Pengantar dan Pemberitahuan Hukum
+1 Pengantar Konektor MySQL/Python
+2 Pedoman untuk Pengembang Python
+3 Konektor/Versi Python
+4 Konektor/Instalasi Python
+5 Contoh Pengkodean Konektor/Python
+6 Tutorial Konektor/Python
+7 Pembentukan Koneksi Konektor/Python
+8 Ekstensi Konektor/Python C
+9 Konektor/Python Topik Lainnya
+Referensi 10 Konektor/Python API
+11 Referensi API Ekstensi Konektor/Python C
+Indeks
+
+RUMAH   BERIKUTNYA
+    © 2022 Oracle   

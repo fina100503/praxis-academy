@@ -1,0 +1,155 @@
+
+Pemetaan objek-relasional
+dari Wikipedia, ensiklopedia gratis
+(Dialihkan dari Object-relational mapping )
+Langsung ke navigasiLangsung ke pencarian
+Jangan bingung dengan pemodelan peran-Objek .
+
+Artikel ini membutuhkan kutipan tambahan untuk verifikasi . Harap membantu meningkatkan artikel ini dengan menambahkan kutipan ke sumber terpercaya . Materi yang tidak bersumber mungkin ditantang dan dihapus.
+Cari sumber:  "Pemetaan objek–relasional"  –  berita  · surat kabar  · buku  · cendekiawan  · JSTOR ( Mei 2009 ) ( Pelajari cara dan kapan saatnya untuk menghapus pesan templat ini )
+Pemetaan objek-relasional ( ORM , O/RM , dan alat pemetaan O/R ) dalam ilmu komputer adalah teknik pemrograman untuk mengubah data antar tipe sistem menggunakan bahasa pemrograman berorientasi objek. Ini menciptakan, pada dasarnya, sebuah " database objek virtual " yang dapat digunakan dari dalam bahasa pemrograman. Ada paket gratis dan komersial yang tersedia yang melakukan pemetaan objek-relasional, meskipun beberapa programmer memilih untuk membangun alat ORM mereka sendiri.
+
+Dalam pemrograman berorientasi objek , tugas manajemen data bertindak pada objek yang hampir selalu bernilai non- skalar . Misalnya, pertimbangkan entri buku alamat yang mewakili satu orang bersama dengan nol atau lebih nomor telepon dan nol atau lebih alamat. Ini dapat dimodelkan dalam implementasi berorientasi objek oleh " Objek orang " dengan atribut/bidanguntuk menampung setiap item data yang terdiri dari entri: nama orang, daftar nomor telepon, dan daftar alamat. Daftar nomor telepon itu sendiri akan berisi "objek PhoneNumber" dan seterusnya. Setiap entri buku alamat tersebut diperlakukan sebagai objek tunggal oleh bahasa pemrograman (dapat direferensikan oleh variabel tunggal yang berisi pointer ke objek, misalnya). Berbagai metode dapat dikaitkan dengan objek, seperti metode untuk mengembalikan nomor telepon yang diinginkan, alamat rumah, dan sebagainya.
+
+Sebaliknya, banyak produk database populer seperti sistem manajemen database SQL (DBMS) tidak berorientasi objek dan hanya dapat menyimpan dan memanipulasi nilai skalar seperti bilangan bulat dan string yang diatur dalam tabel . Pemrogram harus mengubah nilai objek menjadi kelompok nilai yang lebih sederhana untuk disimpan dalam database (dan mengubahnya kembali saat pengambilan), atau hanya menggunakan nilai skalar sederhana di dalam program. Pemetaan objek-relasional mengimplementasikan pendekatan pertama. [1]
+
+Inti masalahnya adalah menerjemahkan representasi logis dari objek ke dalam bentuk atomisasi yang mampu disimpan dalam database sambil mempertahankan properti objek dan hubungannya sehingga dapat dimuat ulang sebagai objek saat dibutuhkan. Jika fungsi penyimpanan dan pengambilan ini diimplementasikan, objek dikatakan persisten . [1]
+
+
+Isi
+1	Ringkasan
+2	Perbandingan dengan teknik akses data tradisional
+3	Database berorientasi objek
+4	Tantangan
+5	Lihat juga
+6	Referensi
+7	Tautan eksternal
+Ikhtisar 
+Implementation-specific details of storage drivers are generally wrapped in an API in the programming language in use, exposing methods to interact with the storage medium in a way which is simpler and more in line with the paradigms of surrounding code.
+
+The following is a simple example, written in C# code, to execute a query written in SQL using a database engine.
+
+var sql = "SELECT id, first_name, last_name, phone, birth_date, sex, age FROM persons WHERE id = 10";
+var result = context.Persons.FromSqlRaw(sql).ToList();
+var name = result[0]["first_name"];
+In contrast, the following makes use of an ORM-job API which makes it possible to write code that naturally makes use of the features of the language.
+
+var person = repository.GetPerson(10);
+var firstName = person.GetFirstName();
+The case above makes use of an object representing the storage repository and methods of that object. Other frameworks might provide code as static methods, as in the example below, and yet other methods may not implement an object-oriented system at all. Often the choice of paradigm is made for the best fit of the ORM into the surrounding language's design principles.
+
+var person = Person.Get(10);
+Usually, the framework will expose some filtering and querying functionality for accessing and modifying subsets of the storage base. The code below queries for people in the database whose ID value is '10'.
+
+var person = Person.Get(Person.Properties.Id == 10);
+Comparison with traditional data access techniques
+Compared to traditional techniques of exchange between an object-oriented language and a relational database, ORM often reduces the amount of code that needs to be written.[2]
+
+Disadvantages of ORM tools generally stem from the high level of abstraction obscuring what is actually happening in the implementation code. Also, heavy reliance on ORM software has been cited as a major factor in producing poorly designed databases.[3]
+
+Object-oriented databases
+Another approach is to use an object-oriented database management system (OODBMS) or document-oriented databases such as native XML databases that provide more flexibility in data modeling. OODBMSs are databases designed specifically for working with object-oriented values. Using an OODBMS eliminates the need for converting data to and from its SQL form, as the data is stored in its original object representation and relationships are directly represented, rather than requiring join tables/operations. The equivalent of ORMs for document-oriented databases are called object-document mappers (ODMs).
+
+Document-oriented databases also prevent the user from having to "shred" objects into table rows. Many of these systems also support the XQuery query language to retrieve datasets.
+
+Object-oriented databases tend to be used in complex, niche applications. One of the arguments against using an OODBMS is that it may not be able to execute ad-hoc, application-independent queries.[citation needed] For this reason, many programmers find themselves more at home with an object-SQL mapping system, even though most object-oriented databases are able to process SQL queries to a limited extent. Other OODBMS provide replication to SQL databases, as a means of addressing the need for ad-hoc queries, while preserving well-known query patterns.[citation needed]
+
+Challenges
+A variety of difficulties arise when considering how to match an object system to a relational database. These difficulties are referred to as the object–relational impedance mismatch.[4]
+
+An alternative to implementing ORM is use of the native procedural languages provided with every major database. These can be called from the client using SQL statements. The Data Access Object (DAO) design pattern is used to abstract these statements and offer a lightweight object-oriented interface to the rest of the application.[5]
+
+See also
+List of object–relational mapping software
+Comparison of object–relational mapping software
+AutoFetch – automatic query tuning
+Common Object Request Broker Architecture (CORBA)
+Object database
+Object persistence
+Object–relational database
+Object–relational impedance mismatch
+Relational model
+SQL (Structured Query Language)
+Java Data Objects
+Service Data Objects
+Entity Framework
+Active record pattern
+Data mapper pattern
+Single Table Inheritance
+References
+ "What is Object/Relational Mapping?". Hibernate Overview. JBOSS Hibernate. Retrieved 27 January 2022.
+ Douglas Barry, Torsten Stanienda, "Solving the Java Object Storage Problem," Computer, vol. 31, no. 11, pp. 33-40, Nov. 1998, http://www2.computer.org/portal/web/csdl/doi/10.1109/2.730734 , Excerpt at http://www.service-architecture.com/object-relational-mapping/articles/transparent_persistence_vs_jdbc_call-level_interface.html. Lines of code using O/R are only a fraction of those needed for a call-level interface (1:4). For this exercise, 496 lines of code were needed using the ODMG Java Binding compared to 1,923 lines of code using JDBC.
+ Josh Berkus, "Wrecking Your Database", Computer, Aug. 2009, https://www.toolbox.com/tech/data-management/blogs/wrecking-your-database-080509/
+ Object–Relational Mapping Revisited - A Quantitative Study on the Impact of Database Technology on O/R Mapping Strategies. M Lorenz, JP Rudolph, G Hesse, M Uflacker, H Plattner. Hawaii International Conference on System Sciences (HICSS), 4877-4886 (DOI:10.24251/hicss.2017.592)
+ Feuerstein, Steven; Bill Pribyl (September 1997). "Oracle PL/SQL Programming". 18.5 Modifying Persistent Objects. Retrieved 23 August 2011.
+External links
+About ORM by Anders Hejlsberg
+Mapping Objects to Relational Databases: O/R Mapping In Detail by Scott W. Ambler
+vte
+Database
+Main	
+RequirementsTheoryModelsDatabase management systemMesinServerAplikasiKoneksi sumber dataDSNAdministratorKunciJenisPeralatan
+Bahasa	
+Definisi dataManipulasi dataPertanyaan pencarian informasi
+Keamanan	
+Pemantauan aktivitasAuditForensikBasis data negatif
+Rancangan	
+Entitas dan hubungan (dan Notasi yang disempurnakan )NormalisasiSkemaPemfaktoran ulangKardinalitas
+Pemrograman	
+Lapisan abstraksiPemetaan objek-relasional
+Pengelolaan	
+VirtualisasiPenyetelan menyimpan cacheMigrasiKelestarianIntegritas
+Lihat juga	
+Arsitektur database-sentrisBasis data cerdasPenguncian dua faseKunci dengan berbagi yang dipesanMuat filePenerbitanMasalah HalloweenLog pengiriman
+ Kategori Proyek Wiki
+Kategori :Pemetaan objek-relasionalpemetaan data
+Menu navigasi
+Belum masuk
+Bicara
+Kontribusi
+Buat Akun
+Gabung
+ArtikelBicara
+MembacaSuntingLihat sejarah
+Mencari
+Cari Wikipedia
+Halaman Utama
+Isi
+Peristiwa saat ini
+Artikel acak
+Tentang Wikipedia
+Hubungi kami
+Menyumbangkan
+Menyumbang
+Membantu
+Belajar mengedit
+Portal komunitas
+Perubahan terbaru
+Unggah data
+Peralatan
+Link apa disini
+Perubahan terkait
+Halaman khusus
+Tautan permanen
+Informasi halaman
+Kutip halaman ini
+Item Wikidata
+Cetak/ekspor
+Unduh sebagai PDF
+Versi cetak
+
+Bahasa
+Jerman
+Spanyol
+Français
+한국어
+Bahasa Indonesia
+日本語
+Portugis
+Рский
+中文
+16 more
+Edit tautan
+Halaman ini terakhir diedit pada 7 Juli 2022, pukul 02:30  (UTC) .
+Teks tersedia di bawah Creative Commons Attribution-ShareAlike License 3.0 ; persyaratan tambahan mungkin berlaku. Dengan menggunakan situs ini, Anda menyetujui Persyaratan Penggunaan dan Kebijakan Privasi . Wikipedia® adalah merek dagang terdaftar dari Wikimedia Foundation, Inc. , sebuah organisasi nirlaba.
+Kebijakan pribadiTentang WikipediaPenafianHubungi WikipediaTampilan selulerPengembangStatistikPernyataan cookieYayasan WikimediaDidukung oleh MediaWiki

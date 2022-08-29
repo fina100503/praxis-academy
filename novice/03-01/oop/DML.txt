@@ -1,0 +1,118 @@
+
+Bahasa manipulasi data
+dari Wikipedia, ensiklopedia gratis
+Langsung ke navigasiLangsung ke pencarian
+Untuk kegunaan lain, lihat Manipulasi .
+
+Artikel ini memiliki banyak masalah. Tolong bantu memperbaikinya atau diskusikan masalah ini di halaman pembicaraan . ( Pelajari bagaimana dan kapan harus menghapus pesan template ini )
+Artikel ini membutuhkan kutipan tambahan untuk verifikasi . ( Juni 2009 )
+Artikel ini mungkin memerlukan pembersihan untuk memenuhi standar kualitas Wikipedia . Masalah khusus adalah: artikel berfokus hampir seluruhnya pada SQL. ( Juni 2020 )
+Bahasa manipulasi data ( DML ) adalah bahasa pemrograman komputer yang digunakan untuk menambah (menyisipkan), menghapus, dan memodifikasi (memperbarui) data dalam database . DML sering merupakan subbahasa dari bahasa database yang lebih luas seperti SQL , dengan DML terdiri dari beberapa operator dalam bahasa tersebut. [1] Pemilihan data read -only terkadang dibedakan sebagai bagian dari bahasa kueri data (DQL) yang terpisah, tetapi ini terkait erat dan terkadang juga dianggap sebagai komponen DML; beberapa operator dapat melakukan pemilihan (membaca) dan menulis.
+
+Bahasa manipulasi data yang populer adalah Structured Query Language (SQL), yang digunakan untuk mengambil dan memanipulasi data dalam database relasional . [2] Bentuk lain dari DML adalah yang digunakan oleh IMS /DLI, database CODASYL , seperti IDMS dan lain-lain.
+
+
+Isi
+1	SQL
+2	Varian
+3	Lihat juga
+3.1	Pernyataan
+3.2	Bahasa terkait
+4	Referensi
+5	Tautan eksternal
+SQL 
+Dalam SQL, bahasa manipulasi data terdiri dari pernyataan perubahan data SQL , [3] yang memodifikasi data yang disimpan tetapi bukan skema atau objek database. Manipulasi objek database persisten, misalnya tabel atau prosedur tersimpan , melalui pernyataan skema SQL, [3] daripada data yang disimpan di dalamnya, dianggap sebagai bagian dari bahasa definisi data (DDL) yang terpisah. Dalam SQL, kedua kategori ini serupa dalam sintaksis terperinci, tipe data, ekspresi, dll., Tetapi berbeda dalam fungsi keseluruhannya. [3]
+
+The SQL-data change statements are a subset of the SQL-data statements; this also contains the SELECT query statement,[3] which strictly speaking is part of the DQL, not the DML. In common practice though, this distinction is not made and SELECT is widely considered to be part of DML,[4] so the DML consists of all SQL-data statements, not only the SQL-data change statements. The SELECT ... INTO ... form combines both selection and manipulation, and thus is strictly considered to be DML because it manipulates (i.e. modifies) data.
+
+Data manipulation languages have their functional capability organized by the initial word in a statement, which is almost always a verb. In the case of SQL, these verbs are:
+
+SELECT ... FROM ... WHERE ... (strictly speaking DQL)
+SELECT ... INTO ...
+INSERT INTO ... VALUES ...
+UPDATE ... SET ... WHERE ...
+DELETE FROM ... WHERE ...
+For example, the command to insert a row into table employees:
+
+INSERT INTO employees (first_name, last_name, fname) VALUES ('John', 'Capita', 'xcapit00');
+Variants
+Most SQL database implementations extend their SQL capabilities by providing imperative, i.e. procedural languages. Examples of these are Oracle's PL/SQL and IBM Db2's SQL_PL.
+
+Data manipulation languages tend to have many different flavors and capabilities between database vendors. There have been a number of standards established for SQL by ANSI,[2] but vendors still provide their own extensions to the standard while not implementing the entire standard.
+
+Data manipulation languages are divided into two types, procedural programming and declarative programming.
+
+Data manipulation languages were initially only used within computer programs, but with the advent of SQL have come to be used interactively by database administrators.
+
+See also
+CRUD
+Statements
+Select (SQL)
+Insert (SQL)
+Update (SQL)
+Delete (SQL)
+Related languages
+Data control language
+Data definition language
+Data query language
+References
+ Chatham, Mark (2012). Structured Query Language By Example - Volume I: Data Query Language. p. 8. ISBN 978-1-29119951-2.
+ SQL92
+ SQL924.22.2, pernyataan SQL diklasifikasikan berdasarkan fungsi
+"Pernyataan Bahasa Manipulasi Data" . Oracle . Pernyataan bahasa manipulasi data (DML) meminta atau memanipulasi data dalam objek skema yang ada.
+"Standar SQL92" .
+Tautan eksternal 
+Perintah DML di Oracle
+vte
+Basis data
+Kategori :Pemodelan dataSQL
+Menu navigasi
+Belum masuk
+Bicara
+Kontribusi
+Buat Akun
+Gabung
+ArtikelBicara
+MembacaSuntingLihat sejarah
+Mencari
+Cari Wikipedia
+Halaman Utama
+Isi
+Peristiwa saat ini
+Artikel acak
+Tentang Wikipedia
+Hubungi kami
+Menyumbangkan
+Menyumbang
+Membantu
+Belajar mengedit
+Portal komunitas
+Perubahan terbaru
+Unggah data
+Peralatan
+Link apa disini
+Perubahan terkait
+Halaman khusus
+Tautan permanen
+Informasi halaman
+Kutip halaman ini
+Item Wikidata
+Cetak/ekspor
+Unduh sebagai PDF
+Versi cetak
+
+Bahasa
+ال
+Jerman
+Spanyol
+Français
+한국어
+日本語
+Portugis
+Рский
+中文
+10 lagi
+Edit tautan
+Halaman ini terakhir diedit pada 8 Agustus 2022, pukul 11:29  (UTC) .
+Teks tersedia di bawah Creative Commons Attribution-ShareAlike License 3.0 ; persyaratan tambahan mungkin berlaku. Dengan menggunakan situs ini, Anda menyetujui Persyaratan Penggunaan dan Kebijakan Privasi . Wikipedia® adalah merek dagang terdaftar dari Wikimedia Foundation, Inc. , sebuah organisasi nirlaba.
+Kebijakan pribadiTentang WikipediaPenafianHubungi WikipediaTampilan selulerPengembangStatistikPernyataan cookieYayasan WikimediaDidukung oleh MediaWiki

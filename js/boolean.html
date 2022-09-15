@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Operator Aritmatika</title>
+</head>
+<body>
+    <script>
+        console.info("hello" || "");
+        console.info("" || []);
+        console.info("0" || "NOL");
+        console.info(0 || "NOL");
+        console.info(null || "NULL");
+        console.info(undefined || "UNDEFINIT");
+        console.info(0 || false);
+
+        const person = {
+            firstName: "",
+            lastName: "finaalia"
+        };
+
+        const name = person.firstName || person.lastName;
+        console.info(name);
+
+        console.info("HELLO" && '');
+        console.info("" && []);
+        console.info("0" && "NOL");
+
+
+    
+    </script>
+</body>
+</html>

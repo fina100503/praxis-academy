@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>hello world</title>
+</head>
+<body>
+    <script>
+    document.writeln(`<p>${parseInt("1.1")}</p>`); // 1
+    document.writeln(`<p>${parseFloat("1.1")}</p>`); // 1.1
+    document.writeln(`<p>${number("1.1")}</p>`); // 1,1
+
+    document.writeln(`<p>${parseInt("salah")}</p>`); // NaN
+    document.writeln(`<p>${parseFloat("1.1text")}</p>`); // 1.1
+
+    // number() tidak akan mentolelir kesalahan pada data 
+    document.writeln(`<p>${Number("1.1ups")}</p>`); // NaN
+    document.writeln(`<p>${Number("1x")}</p>`); // 1.1
+
+
+    </script>
+    
+
+
+</body>
+</html>
